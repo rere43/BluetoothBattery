@@ -2,6 +2,7 @@
     
     在windows系统通知图标区显示蓝牙设备的电池电量
     仅数字,可设置字体 
+![image](https://github.com/user-attachments/assets/c6f5719a-9897-4636-a717-8a1d6aba5800)
 
 
 
