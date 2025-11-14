@@ -45,7 +45,21 @@
             this.refresh_Btn = new System.Windows.Forms.Button();
             this.checkBox_CloseBtnMinimize = new System.Windows.Forms.CheckBox();
             this.label_HowToUse = new System.Windows.Forms.Label();
+            this.label_OffsetX = new System.Windows.Forms.Label();
+            this.label_OffsetY = new System.Windows.Forms.Label();
+            this.label_FontSize = new System.Windows.Forms.Label();
+            this.numericUpDown_OffsetX = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_OffsetY = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_FontSize = new System.Windows.Forms.NumericUpDown();
+            this.button_ApplyIconLayout = new System.Windows.Forms.Button();
+            this.panel_IconSettings = new System.Windows.Forms.Panel();
+            this.label_Language = new System.Windows.Forms.Label();
+            this.comboBox_Language = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_OffsetX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_OffsetY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_FontSize)).BeginInit();
+            this.panel_IconSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -57,7 +71,7 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             this.notifyIcon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_RefreshTooltips);
-            this.notifyIcon1.MouseDown+=NotifyIcon1_MouseDown;
+            this.notifyIcon1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon1_MouseDown);
             // 
             // contextMenuStrip1
             // 
@@ -221,6 +235,131 @@
             this.label_HowToUse.Text = "?";
             this.label_HowToUse.Click += new System.EventHandler(this.label1_Click_1);
             // 
+            // panel_IconSettings
+            // 
+            this.panel_IconSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_IconSettings.Controls.Add(this.numericUpDown_OffsetX);
+            this.panel_IconSettings.Controls.Add(this.numericUpDown_OffsetY);
+            this.panel_IconSettings.Controls.Add(this.numericUpDown_FontSize);
+            this.panel_IconSettings.Controls.Add(this.button_ApplyIconLayout);
+            this.panel_IconSettings.Location = new System.Drawing.Point(765, 455);
+            this.panel_IconSettings.Name = "panel_IconSettings";
+            this.panel_IconSettings.Size = new System.Drawing.Size(565, 75);
+            this.panel_IconSettings.TabIndex = 99;
+            this.panel_IconSettings.ForeColor = System.Drawing.Color.Red;
+            // 
+            // label_OffsetX
+            // 
+            this.label_OffsetX.AutoSize = true;
+            this.label_OffsetX.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_OffsetX.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label_OffsetX.Location = new System.Drawing.Point(770, 410);
+            this.label_OffsetX.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_OffsetX.Name = "label_OffsetX";
+            this.label_OffsetX.Size = new System.Drawing.Size(107, 39);
+            this.label_OffsetX.TabIndex = 100;
+            this.label_OffsetX.Text = "X偏移";
+            // 
+            // label_OffsetY
+            // 
+            this.label_OffsetY.AutoSize = true;
+            this.label_OffsetY.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_OffsetY.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label_OffsetY.Location = new System.Drawing.Point(920, 410);
+            this.label_OffsetY.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_OffsetY.Name = "label_OffsetY";
+            this.label_OffsetY.Size = new System.Drawing.Size(107, 39);
+            this.label_OffsetY.TabIndex = 101;
+            this.label_OffsetY.Text = "Y偏移";
+            // 
+            // label_FontSize
+            // 
+            this.label_FontSize.AutoSize = true;
+            this.label_FontSize.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_FontSize.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label_FontSize.Location = new System.Drawing.Point(1070, 410);
+            this.label_FontSize.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_FontSize.Name = "label_FontSize";
+            this.label_FontSize.Size = new System.Drawing.Size(107, 39);
+            this.label_FontSize.TabIndex = 102;
+            this.label_FontSize.Text = "字号偏移";
+            // 
+            // label_Language
+            // 
+            this.label_Language.AutoSize = true;
+            this.label_Language.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_Language.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label_Language.Location = new System.Drawing.Point(770, 300);
+            this.label_Language.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label_Language.Name = "label_Language";
+            this.label_Language.Size = new System.Drawing.Size(107, 39);
+            this.label_Language.TabIndex = 103;
+            this.label_Language.Text = "语言";
+            // 
+            // comboBox_Language
+            // 
+            this.comboBox_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Language.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox_Language.FormattingEnabled = true;
+            this.comboBox_Language.Location = new System.Drawing.Point(870, 294);
+            this.comboBox_Language.Margin = new System.Windows.Forms.Padding(1);
+            this.comboBox_Language.Name = "comboBox_Language";
+            this.comboBox_Language.Size = new System.Drawing.Size(300, 60);
+            this.comboBox_Language.TabIndex = 104;
+            this.comboBox_Language.SelectedIndexChanged += new System.EventHandler(this.comboBox_Language_SelectedIndexChanged);
+            // 
+            // numericUpDown_OffsetX
+            // 
+            this.numericUpDown_OffsetX.Location = new System.Drawing.Point(5, 10);
+            this.numericUpDown_OffsetX.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_OffsetX.Name = "numericUpDown_OffsetX";
+            this.numericUpDown_OffsetX.Size = new System.Drawing.Size(120, 33);
+            this.numericUpDown_OffsetX.TabIndex = 100;
+            // 
+            // numericUpDown_OffsetY
+            // 
+            this.numericUpDown_OffsetY.Location = new System.Drawing.Point(155, 10);
+            this.numericUpDown_OffsetY.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_OffsetY.Name = "numericUpDown_OffsetY";
+            this.numericUpDown_OffsetY.Size = new System.Drawing.Size(120, 33);
+            this.numericUpDown_OffsetY.TabIndex = 101;
+            // 
+            // numericUpDown_FontSize
+            // 
+            this.numericUpDown_FontSize.Location = new System.Drawing.Point(305, 10);
+            this.numericUpDown_FontSize.Minimum = new decimal(new int[] {
+            -50,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_FontSize.Name = "numericUpDown_FontSize";
+            this.numericUpDown_FontSize.Size = new System.Drawing.Size(120, 33);
+            this.numericUpDown_FontSize.TabIndex = 102;
+            // 
+            // button_ApplyIconLayout
+            // 
+            this.button_ApplyIconLayout.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_ApplyIconLayout.ForeColor = System.Drawing.Color.Black;
+            this.button_ApplyIconLayout.Location = new System.Drawing.Point(455, 8);
+            this.button_ApplyIconLayout.Name = "button_ApplyIconLayout";
+            this.button_ApplyIconLayout.Size = new System.Drawing.Size(120, 60);
+            this.button_ApplyIconLayout.TabIndex = 103;
+            this.button_ApplyIconLayout.Text = "应用";
+            this.button_ApplyIconLayout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button_ApplyIconLayout.UseVisualStyleBackColor = true;
+            this.numericUpDown_OffsetX.ValueChanged += new System.EventHandler(this.numericUpDown_OffsetX_ValueChanged);
+            this.numericUpDown_OffsetY.ValueChanged += new System.EventHandler(this.numericUpDown_OffsetY_ValueChanged);
+            this.numericUpDown_FontSize.ValueChanged += new System.EventHandler(this.numericUpDown_FontSize_ValueChanged);
+            this.button_ApplyIconLayout.Click += new System.EventHandler(this.button_ApplyIconLayout_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -228,6 +367,12 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.WindowText;
             this.ClientSize = new System.Drawing.Size(974, 558);
+            this.Controls.Add(this.panel_IconSettings);
+            this.Controls.Add(this.label_OffsetX);
+            this.Controls.Add(this.label_OffsetY);
+            this.Controls.Add(this.label_FontSize);
+            this.Controls.Add(this.comboBox_Language);
+            this.Controls.Add(this.label_Language);
             this.Controls.Add(this.label_HowToUse);
             this.Controls.Add(this.checkBox_CloseBtnMinimize);
             this.Controls.Add(this.refresh_Btn);
@@ -238,7 +383,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label_DeviceName);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -249,35 +393,42 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panel_IconSettings.ResumeLayout(false);
+            this.panel_IconSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_OffsetX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_OffsetY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_FontSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel=true;
-            form1.Hide();
-        }
-
         #endregion
 
-        private NotifyIcon notifyIcon1;
-        private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem exitToolStripMenuItem;
-        private Label label_DeviceName;
-        private TextBox textBox2;
-        private Label label2;
-        private Label label3;
-        private ComboBox comboBox_DeviceName;
-        private ComboBox comboBox_FontFamily;
-        private Button button1;
-        private Button button2;
-        private Button refresh_Btn;
-        private CheckBox checkBox_CloseBtnMinimize;
-        private ToolStripMenuItem 显示或隐藏主窗口ToolStripMenuItem;
-        private Label label_HowToUse;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Label label_DeviceName;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox_DeviceName;
+        private System.Windows.Forms.ComboBox comboBox_FontFamily;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button refresh_Btn;
+        private System.Windows.Forms.CheckBox checkBox_CloseBtnMinimize;
+        private System.Windows.Forms.ToolStripMenuItem 显示或隐藏主窗口ToolStripMenuItem;
+        private System.Windows.Forms.Label label_HowToUse;
+        private System.Windows.Forms.Label label_OffsetX;
+        private System.Windows.Forms.Label label_OffsetY;
+        private System.Windows.Forms.Label label_FontSize;
+        private System.Windows.Forms.Label label_Language;
+        private System.Windows.Forms.ComboBox comboBox_Language;
+        private System.Windows.Forms.NumericUpDown numericUpDown_OffsetX;
+        private System.Windows.Forms.NumericUpDown numericUpDown_OffsetY;
+        private System.Windows.Forms.NumericUpDown numericUpDown_FontSize;
+        private System.Windows.Forms.Button button_ApplyIconLayout;
+        private System.Windows.Forms.Panel panel_IconSettings;
     }
 }

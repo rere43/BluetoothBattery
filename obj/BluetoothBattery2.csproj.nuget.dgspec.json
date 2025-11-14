@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\BluetoothBattery2.csproj",
         "projectName": "BluetoothBattery2",
         "projectPath": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\BluetoothBattery2.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "K:\\_My_Program_Cache_\\.nuget\\packages",
         "outputPath": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -45,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net6.0-windows7.0": {
@@ -75,7 +75,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100-rc.1.25451.107\\RuntimeIdentifierGraph.json"
         }
       }
     }

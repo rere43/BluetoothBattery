@@ -1,9 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Newtonsoft.Json;
 
@@ -19,65 +27,215 @@ namespace BluetoothBattery2
         private Font font;
 
         /// <summary>
-        /// ¿Õ°×Í¼±ê, Ã¿´ÎË¢ĞÂ¶¼ÔÚ¿Õ°×Í¼±êÉÏĞ´Êı×Ö
+        /// ç©ºç™½å›¾æ ‡, æ¯æ¬¡åˆ·æ–°éƒ½åœ¨ç©ºç™½å›¾æ ‡ä¸Šå†™æ•°å­—
         /// </summary>
         private readonly Icon defaultIcon;
 
         private DateTime lastDateTime;
         private int lastBattery;
         private Settings settings;
-        private static Form1 form1;
+        private static Form1? form1;
 
         /// <summary>
-        /// Ë¢ĞÂÊı×ÖµÄÏß³Ì
+        /// åˆ·æ–°æ•°å­—çš„çº¿ç¨‹
         /// </summary>
         private Thread refreshThread;
 
-        private string SettingsFile_Path = Application.StartupPath + "/settings.txt";
-        private const int IconFontSize = 108;
-        private const int iconPosDeltaX = -20;
+        private readonly string SettingsFile_Path = Path.Combine(Application.StartupPath, "settings.txt");
+        private readonly string IconCacheFolder_Path = Path.Combine(Application.StartupPath, "iconcache");
 
+        private enum UiLanguage
+        {
+            Chinese,
+            English
+        }
 
+        private enum DeviceLabelState
+        {
+            Default,
+            Loading
+        }
 
+        private static readonly string[] SupportedLanguages = { "zh-CN", "en-US" };
+
+        private readonly Dictionary<string, (string zh, string en)> localizedTexts = new()
+        {
+            ["LabelDeviceName_Default"] = ("è®¾å¤‡å", "Device Name"),
+            ["LabelDeviceName_Loading"] = ("æ­£åœ¨è·å–è®¾å¤‡...", "Loading devices..."),
+            ["LabelRefreshInterval"] = ("åˆ·æ–°é—´éš”(æ¯«ç§’),å°äº1åƒä¼šÃ—1000", "Refresh interval (ms). Values < 1000 will be multiplied by 1000."),
+            ["LabelFontFamily"] = ("å­—ä½“family", "Font family"),
+            ["ButtonSave"] = ("ä¿å­˜å¹¶åˆ·æ–°", "Save && refresh"),
+            ["ButtonReset"] = ("æ¢å¤é»˜è®¤", "Reset to default"),
+            ["ButtonRefreshDevices"] = ("åˆ·æ–°", "Reload"),
+            ["CheckBoxCloseToTray"] = ("ç‚¹å‡»å…³é—­æŒ‰é’®æ—¶æœ€å°åŒ–åˆ°æ‰˜ç›˜", "Minimize to tray when the close button is clicked"),
+            ["LabelOffsetX"] = ("Xåç§»", "X offset"),
+            ["LabelOffsetY"] = ("Yåç§»", "Y offset"),
+            ["LabelFontSize"] = ("å­—å·åç§»", "Font size offset"),
+            ["ButtonApplyIconLayout"] = ("åº”ç”¨", "Apply"),
+            ["MenuToggleWindow"] = ("æ˜¾ç¤ºæˆ–éšè—ä¸»çª—å£", "Show / hide main window"),
+            ["MenuExit"] = ("é€€å‡º", "Exit"),
+            ["LabelLanguage"] = ("è¯­è¨€", "Language"),
+            ["LanguageOptionChinese"] = ("ä¸­æ–‡", "Chinese"),
+            ["LanguageOptionEnglish"] = ("è‹±æ–‡", "English"),
+            ["Message_LoadSettingsFallback"] = ("ä½¿ç”¨é»˜è®¤é…ç½®", "Default settings will be used."),
+            ["Message_LoadSettingsTitle"] = ("åŠ è½½è®¾ç½®æ—¶å‡ºé”™", "Failed to load settings"),
+            ["Message_CacheIconsError"] = ("ç¼“å­˜å›¾æ ‡å¤±è´¥", "Failed to cache icons"),
+            ["Message_CacheIconsTitle"] = ("ç¼“å­˜é”™è¯¯", "Cache error"),
+            ["Message_ApplyLayoutQuestion"] = ("æ˜¯å¦ä¿å­˜å½“å‰å›¾æ ‡åç§»å’Œå­—å·è®¾ç½®ï¼Ÿ\næ˜¯: å†™å…¥é…ç½®å¹¶é‡å»ºå›¾æ ‡ç¼“å­˜\nå¦: ä»…é¢„è§ˆæœ¬æ¬¡æ•ˆæœ", "Save current icon offsets and font size?\nYes: write to config and rebuild icon cache\nNo: preview only"),
+            ["Message_ApplyLayoutTitle"] = ("ä¿å­˜å›¾æ ‡å¸ƒå±€è®¾ç½®", "Save icon layout"),
+            ["Message_HowToUse"] = (@"1: ç‚¹å‡»åˆ·æ–°, å¹¶ç­‰å¾…(é€‰é¡¹1çš„æ ‡ç­¾å˜å› 'è®¾å¤‡å')\n2: ç¬¬1ä¸ªé€‰é¡¹é€‰æ‹©è®¾å¤‡\n2: ç¬¬2ä¸ªé€‰é¡¹è®¾ç½®åˆ·æ–°é—´éš”, ä¸å»ºè®®å¤ªå¿«, é»˜è®¤600ç§’\n3: ç‚¹å‡»ä¿å­˜ å¹¶åˆ·æ–°", "1: Click Reload and wait until the label shows \"Device Name\" again.\n2: Choose the device from the first dropdown.\n2: Set the refresh interval (default 600 seconds) in the second input.\n3: Click Save && Refresh."),
+            ["Message_HowToUseTitle"] = ("ä½¿ç”¨æ–¹æ³•", "How to use"),
+            ["TooltipBatteryFormat"] = ("ç”µé‡: {0}", "Battery: {0}"),
+            ["TooltipLastRefreshFormat"] = ("ä¸Šæ¬¡åˆ·æ–°: {0}ç§’å‰", "Last refresh: {0} seconds ago"),
+            ["TooltipIntervalFormat"] = ("é—´éš”: {0}ç§’", "Interval: {0} seconds"),
+            ["TooltipFontFormat"] = ("å­—ä½“: {0}", "Font: {0}"),
+            ["TooltipToggleHint"] = ("åŒå‡»æ˜¾ç¤º/éšè—ä¸»ç•Œé¢", "Double-click to show/hide the main window")
+        };
+
+        private bool isUpdatingLanguageUi;
+        private DeviceLabelState deviceLabelState = DeviceLabelState.Default;
+
+        private class LanguageOption
+        {
+            public string Code { get; }
+            public string Display { get; }
+
+            public LanguageOption(string code, string display)
+            {
+                Code = code;
+                Display = display;
+            }
+
+            public override string ToString() => Display;
+        }
+
+        private UiLanguage CurrentLanguage => string.Equals(settings?.language, SupportedLanguages[1],
+            StringComparison.OrdinalIgnoreCase)
+            ? UiLanguage.English
+            : UiLanguage.Chinese;
+
+        private static string NormalizeLanguageCode(string? code)
+        {
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                return SupportedLanguages[0];
+            }
+
+            return SupportedLanguages.FirstOrDefault(lang =>
+                string.Equals(lang, code, StringComparison.OrdinalIgnoreCase)) ?? SupportedLanguages[0];
+        }
+
+        private string GetLocalizedText(string key)
+        {
+            if (!localizedTexts.TryGetValue(key, out var value))
+            {
+                return key;
+            }
+
+            return CurrentLanguage == UiLanguage.English ? value.en : value.zh;
+        }
+
+        private string FormatLocalizedText(string key, params object[] args) =>
+            string.Format(GetLocalizedText(key), args);
+
+        private string GetLanguageDisplayByCode(string code) =>
+            string.Equals(code, SupportedLanguages[1], StringComparison.OrdinalIgnoreCase)
+                ? GetLocalizedText("LanguageOptionEnglish")
+                : GetLocalizedText("LanguageOptionChinese");
+
+        private void UpdateLanguageSelectorItems()
+        {
+            if (comboBox_Language == null)
+            {
+                return;
+            }
+
+            var selectedCode = settings?.language ?? SupportedLanguages[0];
+            isUpdatingLanguageUi = true;
+            comboBox_Language.BeginUpdate();
+            comboBox_Language.Items.Clear();
+            foreach (var code in SupportedLanguages)
+            {
+                comboBox_Language.Items.Add(new LanguageOption(code, GetLanguageDisplayByCode(code)));
+            }
+
+            var index = -1;
+            for (var i = 0; i < comboBox_Language.Items.Count; i++)
+            {
+                if (comboBox_Language.Items[i] is LanguageOption option &&
+                    string.Equals(option.Code, selectedCode, StringComparison.OrdinalIgnoreCase))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            comboBox_Language.SelectedIndex = index >= 0 ? index : 0;
+            comboBox_Language.EndUpdate();
+            isUpdatingLanguageUi = false;
+        }
+
+        private void SetDeviceLabelState(DeviceLabelState state)
+        {
+            deviceLabelState = state;
+            UpdateDeviceLabelText();
+        }
+
+        private void UpdateDeviceLabelText()
+        {
+            if (label_DeviceName == null)
+            {
+                return;
+            }
+
+            var key = deviceLabelState == DeviceLabelState.Loading
+                ? "LabelDeviceName_Loading"
+                : "LabelDeviceName_Default";
+            label_DeviceName.Text = GetLocalizedText(key);
+        }
 
         public Form1()
         {
             form1 = this;
 
+            Directory.CreateDirectory(IconCacheFolder_Path);
+
             InitializeComponent();
 
-            //´°ÌåÎ»ÖÃÉèÖÃÔÚÓÒÏÂ½Ç
             var width = Screen.PrimaryScreen.WorkingArea.Width;
             var height = Screen.PrimaryScreen.WorkingArea.Height;
-            Location = new Point(width - form1.Size.Width, height - form1.Size.Height);
+            Location = new Point(width - Size.Width, height - Size.Height);
 
-            //³õÊ¼»¯×ÖÌåÏÂÀ­Ñ¡Ïî
             InstalledFontCollection fontCollection = new();
             foreach (var fontFamily in fontCollection.Families)
             {
                 comboBox_FontFamily.Items.Add(fontFamily.Name);
             }
 
-            //¶ÁÈ¡ÉèÖÃ
             try
             {
                 var settingsJson = File.ReadAllText(SettingsFile_Path);
-                settings = JsonConvert.DeserializeObject<Settings>(settingsJson);
+                settings = JsonConvert.DeserializeObject<Settings>(settingsJson) ?? new Settings();
                 if (settings.refreshTimer < 1000)
                     settings.refreshTimer *= 1000;
+                settings.language = NormalizeLanguageCode(settings.language);
                 font = CreateNewFont_FromSettings();
             }
             catch (Exception e)
             {
                 settings = new Settings();
+                settings.language = NormalizeLanguageCode(settings.language);
                 font = CreateNewFont_FromSettings();
-                MessageBox.Show(e.Message + $"\nÊ¹ÓÃÄ¬ÈÏÅäÖÃ", @"¼ÓÔØÉèÖÃÊ±³ö´í");
+                MessageBox.Show(
+                    $"{e.Message}\n{GetLocalizedText("Message_LoadSettingsFallback")}",
+                    GetLocalizedText("Message_LoadSettingsTitle"));
             }
+            settings.iconCacheFontFamilyName ??= string.Empty;
+            settings.language = NormalizeLanguageCode(settings.language);
             RefreshFormUI();
 
             SaveSettings();
 
-            //¿Õ°×Í¼±ê
             defaultIcon = new Icon(notifyIcon1.Icon, 128, 128);
 
             lastDateTime = DateTime.Now;
@@ -86,18 +244,15 @@ namespace BluetoothBattery2
             refreshThread = new Thread(task);
             refreshThread.Start();
 
-            //ÓÒ¼üÍ¼±ê²Ëµ¥¡úÏÔÊ¾»òÒş²ØÖ÷´°¿Ú
             contextMenuStrip1.Items[0].Click += (_, _) => { notifyIcon1_MouseDoubleClick(default, default); };
-            //ÓÒ¼üÍ¼±ê²Ëµ¥¡úÍË³ö ÒÔ´Ë·½Ê½ÍË³ö,·ñÔòÖØ¸´Ë¢ĞÂµÄÏß³Ì»¹»áÔËĞĞ
             contextMenuStrip1.Items[1].Click += (_, _) => { System.Environment.Exit(0); };
 
-            //¹Ø±Õ°´Å¥ Òş²Ø»¹ÊÇÍË³ö
-            form1.Closing += (_, e) =>
+            Closing += (_, e) =>
             {
                 if (checkBox_CloseBtnMinimize.Checked)
                 {
                     e.Cancel = true;
-                    form1.Hide();
+                    Hide();
                 }
                 else
                 {
@@ -108,231 +263,33 @@ namespace BluetoothBattery2
 
         private void SaveSettings()
         {
+            settings.language = NormalizeLanguageCode(settings.language);
             File.WriteAllText(SettingsFile_Path, JsonConvert.SerializeObject(settings));
         }
 
         private Font CreateNewFont_FromSettings()
         {
-            return new(settings.fontFamilyName, IconFontSize, GraphicsUnit.Pixel);
+            var baseFontSize = 108; 
+            var actualFontSize = baseFontSize + settings.iconFontSize; 
+            return new(settings.fontFamilyName, actualFontSize, GraphicsUnit.Pixel);
         }
 
         private async Task InitDeviceDropdown()
         {
-            var deviceNameList = await GetAllDevices();
-            comboBox_DeviceName.Items.AddRange(deviceNameList.Where(deviceName => !string.IsNullOrEmpty(deviceName))
-                .Select(s => (object)s).ToArray());
-            label_DeviceName.Text = @"Éè±¸Ãû";
-        }
-
-        private async Task<IEnumerable<string>> GetAllDevices()
-        {
-/*  GetDevices() ·µ»ØÑùÀı
-Status     Class           FriendlyName
-------     -----           ------------
-OK         Firmware        Éè±¸¹Ì¼ş
-Unknown    HIDClass        ·ûºÏ HID ±ê×¼µÄÓÃ»§¿ØÖÆÉè±¸
-*/
-            label_DeviceName.Text = @"ÕıÔÚ»ñÈ¡Éè±¸...";
-            var deviceList = GetDevices().Split(Environment.NewLine); //Ã¿Ò»ĞĞÎªµ¥¸ö
-            //2¸ö»òÒÔÉÏµÄ¿Õ¸ñ  ¿ÉÄÜ²»ÎÈÍ×
-            Regex r = new Regex(@" {2,}");
-
-            List<Task<Task<string>>> taskList = new();
-
-            for (int index = 3; index < deviceList.Length; index++) //´ÓµÚ4ĞĞ¿ªÊ¼ ¿´·µ»ØÑùÀı
+            SetDeviceLabelState(DeviceLabelState.Loading);
+            comboBox_DeviceName.Items.Clear();
+            try
             {
-                string s = deviceList[index];
-                s = r.Replace(s, "\t"); //½«¿Õ¸ñÌæ»»ÎªÖÆ±í·û, È¡µÚ3¸ö(Éè±¸Ãû) ¿ÉÄÜ²»ÎÈÍ×
-                if (s.Split("\t").Length > 2)
-                {
-                    var deviceName = s.Split("\t")[2];
-
-                    async Task<string> function() =>
-                        int.TryParse(await GetBattery(deviceName), out var _) ? deviceName : string.Empty;
-
-                    Task<Task<string>> task = new(function);
-                    task.Start();
-                    taskList.Add(task);
-                }
+                var deviceNameList = await GetAllDevices();
+                comboBox_DeviceName.Items.AddRange(deviceNameList.Where(deviceName => !string.IsNullOrEmpty(deviceName))
+                    .Select(s => (object)s).ToArray());
             }
-            var taskResult = await Task.WhenAll(taskList);
-
-            return taskResult.Select(r => r.Result);
-        }
-
-
-
-        private async Task Refresh_IconNumber()
-        {
-            //form1.Text = GetBattery(settings.deviceName) ;
-            var backup = lastBattery;
-            int.TryParse(await GetBattery(settings.deviceName), out lastBattery);
-            if (backup - lastBattery > 5)
+            finally
             {
-                lastBattery = backup;
-                return;
-            }
-            var bitmap = defaultIcon.ToBitmap();
-            var graphics = Graphics.FromImage(bitmap);
-            if (lastBattery == 100) lastBattery = 99;
-            var color = lastBattery > 15 ? Color.White : Color.OrangeRed;
-            graphics.DrawString(lastBattery.ToString(), font, new SolidBrush(color), iconPosDeltaX, 0);
-            var icon = System.Drawing.Icon.FromHandle(bitmap.GetHicon());
-            notifyIcon1.Icon = icon;
-            RefreshTooltips();
-            lastDateTime = DateTime.Now;
-        }
-
-        private async Task RefreshIconRepeatly()
-        {
-            while (true)
-            {
-                await Refresh_IconNumber();
-                Thread.CurrentThread.Join(settings.refreshTimer);
+                SetDeviceLabelState(DeviceLabelState.Default);
             }
         }
 
-        private void RefreshTooltips() => notifyIcon1_RefreshTooltips(null, null);
-
-        /// <summary>
-        /// Ë¢ĞÂÓÒÏÂ½ÇÊó±êÌáÊ¾
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void notifyIcon1_RefreshTooltips(object sender, MouseEventArgs e)
-        {
-            var span = DateTime.Now - lastDateTime;
-            notifyIcon1.Text =
-                $@"{settings.deviceName}
-µçÁ¿: {lastBattery}
-ÉÏ´ÎË¢ĞÂ: {span.TotalSeconds:##,###}ÃëÇ°
-¼ä¸ô: {settings.refreshTimer / 1000:##,###}Ãë
-×ÖÌå: {font.Name}
-Ë«»÷ÏÔÊ¾/Òş²ØÖ÷½çÃæ";
-        }
-
-        public async Task<string> GetBattery(string deviceName)
-        {
-            //powershell»ñÈ¡µçÁ¿µÄÃüÁî
-            string command
-                = $"-command Get-PnpDevice -Class 'Bluetooth' -friendlyname '{deviceName}'"
-                  + @"| Get-PnpDeviceProperty -KeyName '{104EA319-6EE2-4701-BD47-8DDBF425BBE5} 2' "
-                  + @"| select-Object -ExpandProperty Data";
-            //pipeline.Commands.AddScript(command,false);
-            //PowerShell ps = PowerShell.Create();
-            //ps.AddScript(  command).Invoke();
-            //pipeline.Invoke();
-            //runspace.Close();
-
-            var start = new ProcessStartInfo
-            {
-                FileName = FileName_PowerShell,
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                Arguments = command,
-                CreateNoWindow = true
-            };
-
-
-            using var process = Process.Start(start);
-            using var reader = process.StandardOutput;
-
-            process.EnableRaisingEvents = true;
-            notifyIcon1.Text = (settings.deviceName);
-            return await reader.ReadToEndAsync();
-        }
-
-
-        /// <summary>
-        /// ÓÉpowershell·µ»ØµÄÉè±¸Ãû
-        /// </summary>
-        /// <returns></returns>
-        private string GetDevices()
-        {
-/*  GetDevices() ·µ»ØÑùÀı
-Status     Class           FriendlyName
-------     -----           ------------
-OK         Firmware        Éè±¸¹Ì¼ş
-Unknown    HIDClass        ·ûºÏ HID ±ê×¼µÄÓÃ»§¿ØÖÆÉè±¸
-*/
-            const string command = @"-command Get-PnpDevice -Class 'Bluetooth'";
-            //pipeline.Commands.AddScript(command,false);
-            //PowerShell ps = PowerShell.Create();
-            //ps.AddScript(  command).Invoke();
-            //pipeline.Invoke();
-            //runspace.Close();
-
-            var start = new ProcessStartInfo
-            {
-                FileName = FileName_PowerShell,
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                Arguments = command,
-                CreateNoWindow = true
-            };
-            using var process = Process.Start(start);
-            using var reader = process.StandardOutput;
-
-            process.EnableRaisingEvents = true;
-
-            return reader.ReadToEnd();
-        }
-
-        [DllImport("user32.dll", EntryPoint = "SetForegroundWindow")]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
-
-        [DllImport("user32.dll", EntryPoint = "GetForegroundWindow")]
-        public static extern IntPtr GetForegroundWindow();
-
-        /// <summary>
-        /// Ë«»÷Í¼±ê ÏÔÊ¾»òÒş²ØÖ÷½çÃæ
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (!form1.Visible || form1.WindowState is not FormWindowState.Normal)
-            {
-                form1.WindowState = FormWindowState.Normal;
-                form1.Show();
-
-                //´°¿Ú±£³ÖÔÚÆÁÄ»ÄÚ
-                KeepFormInScreen();
-            }
-            else if (form1.Visible)
-            {
-                form1.Hide();
-            }
-        }
-
-        private static void KeepFormInScreen()
-        {
-            var width = Screen.PrimaryScreen.WorkingArea.Width;
-            var height = Screen.PrimaryScreen.WorkingArea.Height;
-            form1.Location = new Point(Math.Clamp(form1.Location.X, 0, width - form1.Width),
-                Math.Clamp(form1.Location.Y, 0, height - form1.Height));
-        }
-
-        private void notifyIcon1_MouseOver(object sender, MouseEventArgs e)
-        {
-            Refresh_IconNumber();
-        }
-
-        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-        }
-        /// <summary>
-        /// Ö÷½çÃæÉèÎªÏµÍ³µ±Ç°Ç°Ì¨´°¿Ú  (·ÇÇ°Ì¨´°¿ÚÊ±: ÀıÈçµã»÷ÁËÆäËû´°¿Ú,È»ºóÖ÷½çÃæ±»ÕÚµ²)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NotifyIcon1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (Visible)
-            {
-                SetForegroundWindow(Handle);
-            }
-        }
         private void label1_Click(object sender, EventArgs e)
         {
         }
@@ -345,12 +302,35 @@ Unknown    HIDClass        ·ûºÏ HID ±ê×¼µÄÓÃ»§¿ØÖÆÉè±¸
         {
         }
 
+        private async void refresh_Btn_Click(object sender, EventArgs e)
+        {
+            await InitDeviceDropdown();
+        }
+
+        private void checkBox_CloseBtnMinimize_CheckedChanged(object sender, EventArgs e)
+        {
+            settings.isCloseBtnMinimize = checkBox_CloseBtnMinimize.Checked;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ApplyLocalization();
+        }
+
         private void textBox2_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //ÎŞĞ§ ²»ÊÇÕâÑùÕû 
             if (!RegexInteger(this.textBox2.Text))
             {
-                textBox2.Text = "";
+                e.Cancel = true;
+                textBox2.Text = string.Empty;
+            }
+        }
+
+        private void textBox2_Validated(object sender, EventArgs e)
+        {
+            if (!RegexInteger(this.textBox2.Text))
+            {
+                textBox2.Text = string.Empty;
             }
         }
 
@@ -360,16 +340,7 @@ Unknown    HIDClass        ·ûºÏ HID ±ê×¼µÄÓÃ»§¿ØÖÆÉè±¸
             return g.IsMatch(IInteger);
         }
 
-        private void textBox2_Validated(object sender, EventArgs e)
-        {
-            //ÎŞĞ§ ²»ÊÇÕâÑùÕû 
-            if (!RegexInteger(this.textBox2.Text))
-            {
-                textBox2.Text = "";
-            }
-        }
-
-        private void ConfirmBtn_Click(object sender, EventArgs _)
+        private async void ConfirmBtn_Click(object sender, EventArgs _)
         {
             var backupSetting = settings;
             try
@@ -380,64 +351,186 @@ Unknown    HIDClass        ·ûºÏ HID ±ê×¼µÄÓÃ»§¿ØÖÆÉè±¸
                     settings.refreshTimer *= 1000;
                 settings.fontFamilyName = comboBox_FontFamily.Text;
                 font = CreateNewFont_FromSettings();
-                Refresh_IconNumber();
+                if (!string.Equals(settings.fontFamilyName, settings.iconCacheFontFamilyName,
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    await CacheIconsForCurrentFontAsync();
+                }
+                await Refresh_IconNumber(true);
             }
             catch (Exception e)
             {
                 settings = backupSetting;
-                Refresh_IconNumber();
-                MessageBox.Show(e.Message + $"\nÊ¹ÓÃÄ¬ÈÏÅäÖÃ", @"¼ÓÔØÉèÖÃÊ±³ö´í");
+                await Refresh_IconNumber();
+                MessageBox.Show(
+                    $"{e.Message}\n{GetLocalizedText("Message_LoadSettingsFallback")}",
+                    GetLocalizedText("Message_LoadSettingsTitle"));
             }
             RefreshFormUI();
-            RefreshTooltips();
             SaveSettings();
         }
 
-        /// <summary>
-        /// Ë¢ĞÂÖ÷´°¿ÚÎÄ±¾
-        /// </summary>
         private void RefreshFormUI()
         {
             comboBox_DeviceName.Text = settings.deviceName;
             textBox2.Text = settings.refreshTimer.ToString();
             comboBox_FontFamily.Text = settings.fontFamilyName;
             checkBox_CloseBtnMinimize.Checked = settings.isCloseBtnMinimize;
+            numericUpDown_OffsetX.Value = settings.iconOffsetX;
+            numericUpDown_OffsetY.Value = settings.iconOffsetY;
+            numericUpDown_FontSize.Value = settings.iconFontSize;
+            ApplyLocalization();
         }
 
-        private void SetToDefaultBtn_Click(object sender, EventArgs e)
+        private void ApplyLocalization()
+        {
+            UpdateLanguageSelectorItems();
+            UpdateDeviceLabelText();
+
+            label2.Text = GetLocalizedText("LabelRefreshInterval");
+            label3.Text = GetLocalizedText("LabelFontFamily");
+            button1.Text = GetLocalizedText("ButtonSave");
+            button2.Text = GetLocalizedText("ButtonReset");
+            refresh_Btn.Text = GetLocalizedText("ButtonRefreshDevices");
+            checkBox_CloseBtnMinimize.Text = GetLocalizedText("CheckBoxCloseToTray");
+            label_OffsetX.Text = GetLocalizedText("LabelOffsetX");
+            label_OffsetY.Text = GetLocalizedText("LabelOffsetY");
+            label_FontSize.Text = GetLocalizedText("LabelFontSize");
+            button_ApplyIconLayout.Text = GetLocalizedText("ButtonApplyIconLayout");
+            label_Language.Text = GetLocalizedText("LabelLanguage");
+
+            æ˜¾ç¤ºæˆ–éšè—ä¸»çª—å£ToolStripMenuItem.Text = GetLocalizedText("MenuToggleWindow");
+            exitToolStripMenuItem.Text = GetLocalizedText("MenuExit");
+        }
+
+        private async void SetToDefaultBtn_Click(object sender, EventArgs e)
         {
             settings = new Settings();
+            settings.language = NormalizeLanguageCode(settings.language);
             font = CreateNewFont_FromSettings();
-            Refresh_IconNumber();
+            await CacheIconsForCurrentFontAsync();
+            await Refresh_IconNumber(true);
             RefreshFormUI();
-            RefreshTooltips();
             SaveSettings();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void comboBox_Language_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (isUpdatingLanguageUi)
+            {
+                return;
+            }
+
+            if (comboBox_Language.SelectedItem is not LanguageOption option)
+            {
+                return;
+            }
+
+            settings.language = NormalizeLanguageCode(option.Code);
+            SaveSettings();
+            ApplyLocalization();
+            RefreshTooltips();
         }
 
-        private void refresh_Btn_Click(object sender, EventArgs e)
+        /// <summary>
+        /// åº”ç”¨å›¾æ ‡åç§»ä¸å­—å·çš„æŒ‰é’®ç‚¹å‡»äº‹ä»¶ï¼ˆéœ€è¦é…åˆ UI æ§ä»¶ï¼‰ã€‚
+        /// </summary>
+        private async void button_ApplyIconLayout_Click(object sender, EventArgs e)
         {
-            InitDeviceDropdown();
-        }
+            // è¿™é‡Œå‡å®šä½ åœ¨ Designer ä¸­æ·»åŠ äº†ä¸‰ä¸ª NumericUpDown æ§ä»¶
+            // numericUpDown_OffsetX, numericUpDown_OffsetY, numericUpDown_FontSize
 
-        private void checkBox_CloseBtnMinimize_CheckedChanged(object sender, EventArgs e)
-        {
-            settings.isCloseBtnMinimize = checkBox_CloseBtnMinimize.Checked;
-        }
+            var tempOffsetX = settings.iconOffsetX;
+            var tempOffsetY = settings.iconOffsetY;
+            var tempFontSize = settings.iconFontSize;
 
-        private void button3_Click(object sender, EventArgs e)
-        {
+            try
+            {
+                // ä» UI è¯»å–ä¸´æ—¶å€¼
+                settings.iconOffsetX = (int)numericUpDown_OffsetX.Value;
+                settings.iconOffsetY = (int)numericUpDown_OffsetY.Value;
+                settings.iconFontSize = (int)numericUpDown_FontSize.Value;
+
+                // æ›´æ–°å­—ä½“å¹¶åˆ·æ–°ä¸€æ¬¡å›¾æ ‡é¢„è§ˆ
+                font = CreateNewFont_FromSettings();
+                await Refresh_IconNumber();
+
+                var result = MessageBox.Show(
+                    GetLocalizedText("Message_ApplyLayoutQuestion"),
+                    GetLocalizedText("Message_ApplyLayoutTitle"),
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // ä¿å­˜åˆ°é…ç½®å¹¶é‡å»ºç¼“å­˜
+                    await CacheIconsForCurrentFontAsync();
+                    SaveSettings();
+                }
+                else
+                {
+                    // ä¸ä¿å­˜ï¼Œæ¢å¤åŸè®¾ç½®å¹¶åˆ·æ–°
+                    settings.iconOffsetX = tempOffsetX;
+                    settings.iconOffsetY = tempOffsetY;
+                    settings.iconFontSize = tempFontSize;
+                    font = CreateNewFont_FromSettings();
+                    await Refresh_IconNumber(true);
+                }
+            }
+            catch
+            {
+                // å‡ºé”™æ—¶æ¢å¤æ—§å€¼
+                settings.iconOffsetX = tempOffsetX;
+                settings.iconOffsetY = tempOffsetY;
+                settings.iconFontSize = tempFontSize;
+                font = CreateNewFont_FromSettings();
+                await Refresh_IconNumber();
+            }
+
+            RefreshFormUI();
         }
 
         private void label1_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show(@"1: µã»÷Ë¢ĞÂ, ²¢µÈ´ı(Ñ¡Ïî1µÄ±êÇ©±ä»Ø 'Éè±¸Ãû')
-2: µÚ1¸öÑ¡ÏîÑ¡ÔñÉè±¸
-2: µÚ2¸öÑ¡ÏîÉèÖÃË¢ĞÂ¼ä¸ô, ²»½¨ÒéÌ«¿ì, Ä¬ÈÏ600Ãë
-3: µã»÷±£´æ ²¢Ë¢ĞÂ", "Ê¹ÓÃ·½·¨");
+            MessageBox.Show(
+                GetLocalizedText("Message_HowToUse"),
+                GetLocalizedText("Message_HowToUseTitle"));
+        }
+
+        /// <summary>
+        /// Xåç§»æ•°å€¼æ”¹å˜äº‹ä»¶
+        /// </summary>
+        private async void numericUpDown_OffsetX_ValueChanged(object sender, EventArgs e)
+        {
+            // å®æ—¶æ›´æ–°è®¾ç½®ï¼ˆä¸ç«‹å³ä¿å­˜ï¼‰
+            settings.iconOffsetX = (int)numericUpDown_OffsetX.Value;
+            // å¯é€‰ï¼šå®æ—¶é¢„è§ˆæ•ˆæœ
+            font = CreateNewFont_FromSettings();
+            await Refresh_IconNumber(true);
+        }
+
+        /// <summary>
+        /// Yåç§»æ•°å€¼æ”¹å˜äº‹ä»¶
+        /// </summary>
+        private async void numericUpDown_OffsetY_ValueChanged(object sender, EventArgs e)
+        {
+            // å®æ—¶æ›´æ–°è®¾ç½®ï¼ˆä¸ç«‹å³ä¿å­˜ï¼‰
+            settings.iconOffsetY = (int)numericUpDown_OffsetY.Value;
+            // å¯é€‰ï¼šå®æ—¶é¢„è§ˆæ•ˆæœ
+            font = CreateNewFont_FromSettings();
+            await Refresh_IconNumber(true);
+        }
+
+        /// <summary>
+        /// å­—å·åç§»æ•°å€¼æ”¹å˜äº‹ä»¶
+        /// </summary>
+        private async void numericUpDown_FontSize_ValueChanged(object sender, EventArgs e)
+        {
+            // å®æ—¶æ›´æ–°è®¾ç½®ï¼ˆä¸ç«‹å³ä¿å­˜ï¼‰
+            settings.iconFontSize = (int)numericUpDown_FontSize.Value;
+            // å¯é€‰ï¼šå®æ—¶é¢„è§ˆæ•ˆæœ
+            font = CreateNewFont_FromSettings();
+            await Refresh_IconNumber(true);
         }
     }
 
@@ -448,5 +541,10 @@ Unknown    HIDClass        ·ûºÏ HID ±ê×¼µÄÓÃ»§¿ØÖÆÉè±¸
         public string fontFamilyName = "jb";
         public List<string> availableDevice = new();
         public bool isCloseBtnMinimize;
+        public string iconCacheFontFamilyName = string.Empty;
+        public int iconOffsetX = -20;
+        public int iconOffsetY = 0;
+        public int iconFontSize = 0;
+        public string language = "zh-CN";
     }
 }
