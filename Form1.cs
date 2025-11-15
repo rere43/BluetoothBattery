@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Newtonsoft.Json;
+using Microsoft.Win32;
 
 
 
@@ -24,6 +25,8 @@ namespace BluetoothBattery2
     {
         public const int DefaultRefreshTimer = 600000;
         private const string FileName_PowerShell = "pwsh";
+        private const string StartupRegistryPath = @"Software\\Microsoft\\Windows\\CurrentVersion\\Run";
+        private const string StartupRegistryValueName = "BluetoothBattery2";
         private Font font;
 
         /// <summary>
@@ -50,6 +53,44 @@ namespace BluetoothBattery2
             English
         }
 
+        private bool TryUpdateStartupRegistration(bool enable, bool showErrorMessage = true)
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(StartupRegistryPath, writable: true) ??
+                                Registry.CurrentUser.CreateSubKey(StartupRegistryPath, writable: true);
+
+                if (key == null)
+                {
+                    throw new InvalidOperationException("无法访问注册表项。");
+                }
+
+                if (enable)
+                {
+                    key.SetValue(StartupRegistryValueName, $"\"{Application.ExecutablePath}\"");
+                }
+                else
+                {
+                    key.DeleteValue(StartupRegistryValueName, false);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                if (showErrorMessage)
+                {
+                    MessageBox.Show(
+                        string.Format(GetLocalizedText("Message_StartupSettingError"), ex.Message),
+                        GetLocalizedText("Message_StartupSettingTitle"),
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                return false;
+            }
+        }
+
         private enum DeviceLabelState
         {
             Default,
@@ -68,6 +109,7 @@ namespace BluetoothBattery2
             ["ButtonReset"] = ("恢复默认", "Reset to default"),
             ["ButtonRefreshDevices"] = ("刷新", "Reload"),
             ["CheckBoxCloseToTray"] = ("点击关闭按钮时最小化到托盘", "Minimize to tray when the close button is clicked"),
+            ["CheckBoxRunOnStartup"] = ("开机启动", "Run at startup"),
             ["LabelOffsetX"] = ("X偏移", "X offset"),
             ["LabelOffsetY"] = ("Y偏移", "Y offset"),
             ["LabelFontSize"] = ("字号偏移", "Font size offset"),
@@ -75,6 +117,7 @@ namespace BluetoothBattery2
             ["MenuToggleWindow"] = ("显示或隐藏主窗口", "Show / hide main window"),
             ["MenuExit"] = ("退出", "Exit"),
             ["LabelLanguage"] = ("语言", "Language"),
+            ["LabelHowToUse"] = ("使用说明 ?", "Help ?"),
             ["LanguageOptionChinese"] = ("中文", "Chinese"),
             ["LanguageOptionEnglish"] = ("英文", "English"),
             ["Message_LoadSettingsFallback"] = ("使用默认配置", "Default settings will be used."),
@@ -83,16 +126,29 @@ namespace BluetoothBattery2
             ["Message_CacheIconsTitle"] = ("缓存错误", "Cache error"),
             ["Message_ApplyLayoutQuestion"] = ("是否保存当前图标偏移和字号设置？\n是: 写入配置并重建图标缓存\n否: 仅预览本次效果", "Save current icon offsets and font size?\nYes: write to config and rebuild icon cache\nNo: preview only"),
             ["Message_ApplyLayoutTitle"] = ("保存图标布局设置", "Save icon layout"),
-            ["Message_HowToUse"] = (@"1: 点击刷新, 并等待(选项1的标签变回 '设备名')\n2: 第1个选项选择设备\n2: 第2个选项设置刷新间隔, 不建议太快, 默认600秒\n3: 点击保存 并刷新", "1: Click Reload and wait until the label shows \"Device Name\" again.\n2: Choose the device from the first dropdown.\n2: Set the refresh interval (default 600 seconds) in the second input.\n3: Click Save && Refresh."),
+            ["Message_HowToUse"] = (
+                string.Join(Environment.NewLine,
+                    "1: 点击刷新, 并等待(选项1的标签变回 '设备名')",
+                    "2: 第1个选项选择设备",
+                    "2: 第2个选项设置刷新间隔, 不建议太快, 默认600秒",
+                    "3: 点击保存 并刷新"),
+                string.Join(Environment.NewLine,
+                    "1: Click Reload and wait until the label shows \"Device Name\" again.",
+                    "2: Choose the device from the first dropdown.",
+                    "2: Set the refresh interval (default 600 seconds) in the second input.",
+                    "3: Click Save && Refresh.")),
             ["Message_HowToUseTitle"] = ("使用方法", "How to use"),
             ["TooltipBatteryFormat"] = ("电量: {0}", "Battery: {0}"),
             ["TooltipLastRefreshFormat"] = ("上次刷新: {0}秒前", "Last refresh: {0} seconds ago"),
             ["TooltipIntervalFormat"] = ("间隔: {0}秒", "Interval: {0} seconds"),
             ["TooltipFontFormat"] = ("字体: {0}", "Font: {0}"),
-            ["TooltipToggleHint"] = ("双击显示/隐藏主界面", "Double-click to show/hide the main window")
+            ["TooltipToggleHint"] = ("双击显示/隐藏主界面", "Double-click to show/hide the main window"),
+            ["Message_StartupSettingTitle"] = ("开机启动设置", "Startup setting"),
+            ["Message_StartupSettingError"] = ("更新开机启动设置失败: {0}", "Failed to update startup setting: {0}")
         };
 
         private bool isUpdatingLanguageUi;
+        private bool isUpdatingStartupCheckbox;
         private DeviceLabelState deviceLabelState = DeviceLabelState.Default;
 
         private class LanguageOption
@@ -181,6 +237,34 @@ namespace BluetoothBattery2
             UpdateDeviceLabelText();
         }
 
+        private void NumericUpDown_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (sender is NumericUpDown numericControl)
+            {
+                // 获取当前值
+                decimal value = numericControl.Value;
+                
+                // 根据滚轮方向调整值（使用e.Delta的符号判断方向）
+                int delta = Math.Sign(e.Delta);
+                
+                // 计算新值
+                decimal newValue = value + delta;
+                
+                // 确保新值在允许的范围内
+                if (newValue >= numericControl.Minimum && newValue <= numericControl.Maximum)
+                {
+                    numericControl.Value = newValue;
+                }
+                
+                // 触发值改变事件
+                numericControl.Focus();
+                numericControl.Select(0, numericControl.Text.Length);
+                
+                // 标记事件为已处理，防止默认的滚轮行为
+                ((HandledMouseEventArgs)e).Handled = true;
+            }
+        }
+
         private void UpdateDeviceLabelText()
         {
             if (label_DeviceName == null)
@@ -201,6 +285,10 @@ namespace BluetoothBattery2
             Directory.CreateDirectory(IconCacheFolder_Path);
 
             InitializeComponent();
+
+            numericUpDown_OffsetX.MouseWheel += NumericUpDown_MouseWheel;
+            numericUpDown_OffsetY.MouseWheel += NumericUpDown_MouseWheel;
+            numericUpDown_FontSize.MouseWheel += NumericUpDown_MouseWheel;
 
             var width = Screen.PrimaryScreen.WorkingArea.Width;
             var height = Screen.PrimaryScreen.WorkingArea.Height;
@@ -232,6 +320,7 @@ namespace BluetoothBattery2
             }
             settings.iconCacheFontFamilyName ??= string.Empty;
             settings.language = NormalizeLanguageCode(settings.language);
+            TryUpdateStartupRegistration(settings.runOnStartup, false);
             RefreshFormUI();
 
             SaveSettings();
@@ -312,6 +401,26 @@ namespace BluetoothBattery2
             settings.isCloseBtnMinimize = checkBox_CloseBtnMinimize.Checked;
         }
 
+        private void checkBox_RunOnStartup_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isUpdatingStartupCheckbox)
+            {
+                return;
+            }
+
+            var desired = checkBox_RunOnStartup.Checked;
+            if (!TryUpdateStartupRegistration(desired))
+            {
+                isUpdatingStartupCheckbox = true;
+                checkBox_RunOnStartup.Checked = !desired;
+                isUpdatingStartupCheckbox = false;
+                return;
+            }
+
+            settings.runOnStartup = desired;
+            SaveSettings();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             ApplyLocalization();
@@ -379,6 +488,9 @@ namespace BluetoothBattery2
             numericUpDown_OffsetX.Value = settings.iconOffsetX;
             numericUpDown_OffsetY.Value = settings.iconOffsetY;
             numericUpDown_FontSize.Value = settings.iconFontSize;
+            isUpdatingStartupCheckbox = true;
+            checkBox_RunOnStartup.Checked = settings.runOnStartup;
+            isUpdatingStartupCheckbox = false;
             ApplyLocalization();
         }
 
@@ -393,6 +505,7 @@ namespace BluetoothBattery2
             button2.Text = GetLocalizedText("ButtonReset");
             refresh_Btn.Text = GetLocalizedText("ButtonRefreshDevices");
             checkBox_CloseBtnMinimize.Text = GetLocalizedText("CheckBoxCloseToTray");
+            checkBox_RunOnStartup.Text = GetLocalizedText("CheckBoxRunOnStartup");
             label_OffsetX.Text = GetLocalizedText("LabelOffsetX");
             label_OffsetY.Text = GetLocalizedText("LabelOffsetY");
             label_FontSize.Text = GetLocalizedText("LabelFontSize");
@@ -546,5 +659,6 @@ namespace BluetoothBattery2
         public int iconOffsetY = 0;
         public int iconFontSize = 0;
         public string language = "zh-CN";
+        public bool runOnStartup;
     }
 }
