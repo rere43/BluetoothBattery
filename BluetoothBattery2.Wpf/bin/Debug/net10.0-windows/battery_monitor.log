@@ -1,0 +1,123 @@
+2025-11-16T10:51:08.0025418+08:00 BatteryMonitorService disposed
+2025-11-16T10:51:24.8442582+08:00 BatteryMonitorService disposed
+2025-11-16T12:29:28.5709017+08:00 BatteryMonitorService disposed
+2025-11-16T15:41:32.5993554+08:00 BatteryMonitorService disposed
+2025-11-16T15:41:36.8162704+08:00 BatteryMonitorService disposed
+2025-11-16T15:41:40.6944116+08:00 BatteryMonitorService disposed
+2025-11-16T15:41:47.4441022+08:00 BatteryMonitorService disposed
+2025-11-16T15:41:51.5660199+08:00 BatteryMonitorService disposed
+2025-11-16T15:41:55.2730793+08:00 BatteryMonitorService disposed
+2025-11-16T15:41:59.0072241+08:00 BatteryMonitorService disposed
+2025-11-16T19:50:02.3356504+08:00 BatteryMonitorService disposed
+2025-11-16T19:50:08.1414725+08:00 BatteryMonitorService disposed
+2025-11-16T19:50:11.9648337+08:00 BatteryMonitorService disposed
+2025-11-16T19:50:15.0163055+08:00 BatteryMonitorService disposed
+2025-11-16T19:50:18.9222691+08:00 BatteryMonitorService disposed
+2025-11-16T20:02:41.2902040+08:00 BatteryMonitorService disposed
+2025-11-16T20:02:59.9134048+08:00 BatteryMonitorService disposed
+2025-11-16T20:10:08.1670687+08:00 BatteryMonitorService disposed
+2025-11-16T20:10:09.0139531+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T20:15:29.1595792+08:00 BatteryMonitorService disposed
+2025-11-16T20:15:29.3346811+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T20:21:58.8511290+08:00 BatteryMonitorService disposed
+2025-11-16T20:21:59.2885036+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T20:22:47.2248594+08:00 BatteryMonitorService disposed
+2025-11-16T20:22:47.4986728+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T20:23:38.4663363+08:00 BatteryMonitorService disposed
+2025-11-16T20:24:30.8984729+08:00 BatteryMonitorService disposed
+2025-11-16T20:24:31.5762571+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T20:39:00.9364566+08:00 BatteryMonitorService disposed
+2025-11-16T20:39:01.7496887+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T20:39:51.4487433+08:00 BatteryMonitorService disposed
+2025-11-16T20:39:52.1053156+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T20:40:10.0619103+08:00 BatteryMonitorService disposed
+2025-11-16T20:40:10.8737681+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T20:42:11.6823996+08:00 BatteryMonitorService disposed
+2025-11-16T20:42:12.6913784+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T21:33:46.1315355+08:00 BatteryMonitorService disposed
+2025-11-16T21:33:46.4059709+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T21:34:21.3299903+08:00 BatteryMonitorService disposed
+2025-11-16T21:34:22.2086409+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T21:37:52.5272947+08:00 BatteryMonitorService disposed
+2025-11-16T21:37:53.4223009+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 100
+2025-11-16T21:38:09.0305653+08:00 BatteryMonitorService disposed
+2025-11-16T21:38:10.0134566+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 100
+2025-11-16T21:38:50.6351062+08:00 BatteryMonitorService disposed
+2025-11-16T21:38:51.6372784+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 100
+2025-11-16T21:38:55.2535311+08:00 BatteryMonitorService disposed
+2025-11-16T21:38:55.4206144+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 100
+2025-11-16T21:38:57.8333279+08:00 BatteryMonitorService disposed
+2025-11-16T21:38:57.9860161+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 100
+2025-11-16T21:39:20.0489945+08:00 BatteryMonitorService disposed
+2025-11-16T21:39:20.8761982+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 100
+2025-11-16T21:40:08.3134969+08:00 BatteryMonitorService disposed
+2025-11-16T21:40:09.0894365+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 100
+2025-11-16T21:45:04.8281089+08:00 BatteryMonitorService disposed
+2025-11-16T21:46:23.6011480+08:00 BatteryMonitorService disposed
+2025-11-16T21:46:24.1982694+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 100
+2025-11-16T21:49:19.5130703+08:00 BatteryMonitorService disposed
+2025-11-16T21:54:37.6280378+08:00 BatteryMonitorService disposed
+2025-11-16T22:01:21.3720411+08:00 BatteryMonitorService disposed
+2025-11-16T22:01:36.6615812+08:00 BatteryMonitorService disposed
+2025-11-16T22:01:37.3212804+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 103
+2025-11-16T22:01:45.8316422+08:00 BatteryMonitorService disposed

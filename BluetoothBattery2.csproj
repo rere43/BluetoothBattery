@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -10,6 +10,21 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="BluetoothBattery2.Wpf\**" />
+    <EmbeddedResource Remove="BluetoothBattery2.Wpf\**" />
+    <None Remove="BluetoothBattery2.Wpf\**" />
+    <Page Remove="BluetoothBattery2.Wpf\**" />
+    <Compile Remove="BluetoothBattery2.Core\**" />
+    <EmbeddedResource Remove="BluetoothBattery2.Core\**" />
+    <None Remove="BluetoothBattery2.Core\**" />
+    <Page Remove="BluetoothBattery2.Core\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="BluetoothBattery2.Core\BluetoothBattery2.Core.csproj" />
   </ItemGroup>
 
 </Project>

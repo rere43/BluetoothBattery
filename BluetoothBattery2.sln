@@ -5,16 +5,56 @@ VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothBattery2", "BluetoothBattery2.csproj", "{291875F3-1614-43D5-A6E6-7CE6AEF699B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothBattery2.Wpf", "BluetoothBattery2.Wpf\BluetoothBattery2.Wpf.csproj", "{5B01336F-0DA8-48AA-8125-4C25F399775B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothBattery2.Core", "BluetoothBattery2.Core\BluetoothBattery2.Core.csproj", "{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Debug|x64.Build.0 = Debug|Any CPU
+		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Debug|x86.Build.0 = Debug|Any CPU
 		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Release|x64.ActiveCfg = Release|Any CPU
+		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Release|x64.Build.0 = Release|Any CPU
+		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Release|x86.ActiveCfg = Release|Any CPU
+		{291875F3-1614-43D5-A6E6-7CE6AEF699B5}.Release|x86.Build.0 = Release|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Debug|x64.Build.0 = Debug|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Debug|x86.Build.0 = Debug|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Release|x64.ActiveCfg = Release|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Release|x64.Build.0 = Release|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Release|x86.ActiveCfg = Release|Any CPU
+		{5B01336F-0DA8-48AA-8125-4C25F399775B}.Release|x86.Build.0 = Release|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Debug|x64.Build.0 = Debug|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Debug|x86.Build.0 = Debug|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Release|x64.ActiveCfg = Release|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Release|x64.Build.0 = Release|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Release|x86.ActiveCfg = Release|Any CPU
+		{1FD8D09F-02A2-42B4-812B-AA1ACBDD6A5D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

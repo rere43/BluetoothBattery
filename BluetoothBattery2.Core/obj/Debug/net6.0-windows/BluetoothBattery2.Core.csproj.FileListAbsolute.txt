@@ -1,0 +1,13 @@
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\bin\Debug\net6.0-windows\BluetoothBattery2.Core.deps.json
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\bin\Debug\net6.0-windows\BluetoothBattery2.Core.dll
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\bin\Debug\net6.0-windows\BluetoothBattery2.Core.pdb
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\BluetoothBattery2.Core.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\BluetoothBattery2.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\BluetoothBattery2.Core.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\BluetoothBattery2.Core.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\BluetoothBattery2.Core.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\BluetoothBattery2.Core.sourcelink.json
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\BluetoothBattery2.Core.dll
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\refint\BluetoothBattery2.Core.dll
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\BluetoothBattery2.Core.pdb
+C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\obj\Debug\net6.0-windows\ref\BluetoothBattery2.Core.dll

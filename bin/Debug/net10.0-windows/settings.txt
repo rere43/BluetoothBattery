@@ -1,0 +1,1 @@
+{"deviceName":"MIIIW MECH-KB Pro","refreshTimer":1000,"fontFamilyName":"jb","availableDevice":[],"isCloseBtnMinimize":false,"iconCacheFontFamilyName":"jb","iconOffsetX":0,"iconOffsetY":0,"iconFontSize":0,"language":"zh-CN","runOnStartup":false,"iconLayoutMigrated":true}

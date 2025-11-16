@@ -1,0 +1,300 @@
+2025-11-15T23:35:10.0919693+08:00 BatteryMonitorService disposed
+2025-11-15T23:36:00.6694352+08:00 BatteryMonitorService disposed
+2025-11-15T23:36:13.4334828+08:00 BatteryMonitorService disposed
+2025-11-15T23:41:07.6270755+08:00 BatteryMonitorService disposed
+2025-11-15T23:43:41.4955633+08:00 BatteryMonitorService disposed
+2025-11-15T23:43:44.5396477+08:00 BatteryMonitorService disposed
+2025-11-15T23:43:50.9156970+08:00 BatteryMonitorService disposed
+2025-11-15T23:43:53.1486672+08:00 BatteryMonitorService disposed
+2025-11-15T23:44:01.3310896+08:00 BatteryMonitorService disposed
+2025-11-15T23:44:03.9376178+08:00 BatteryMonitorService disposed
+2025-11-15T23:44:12.6966573+08:00 BatteryMonitorService disposed
+2025-11-15T23:44:13.1666446+08:00 BatteryMonitorService disposed
+2025-11-15T23:49:01.9587067+08:00 BatteryMonitorService disposed
+2025-11-15T23:49:05.2533558+08:00 BatteryMonitorService disposed
+2025-11-15T23:49:13.0690748+08:00 BatteryMonitorService disposed
+2025-11-15T23:49:31.3018257+08:00 BatteryMonitorService disposed
+2025-11-15T23:49:50.2103549+08:00 BatteryMonitorService disposed
+2025-11-15T23:49:51.7345746+08:00 BatteryMonitorService disposed
+2025-11-15T23:49:52.4067909+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 90
+2025-11-15T23:51:18.4839937+08:00 BatteryMonitorService disposed
+2025-11-15T23:51:28.0303327+08:00 BatteryMonitorService disposed
+2025-11-15T23:58:42.4767881+08:00 BatteryMonitorService disposed
+2025-11-16T00:00:38.2673206+08:00 BatteryMonitorService disposed
+2025-11-16T00:00:41.3653181+08:00 BatteryMonitorService disposed
+2025-11-16T00:01:36.3895273+08:00 BatteryMonitorService disposed
+2025-11-16T00:01:38.0840953+08:00 BatteryMonitorService disposed
+2025-11-16T00:01:38.5108692+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 90
+2025-11-16T00:01:57.5205683+08:00 BatteryMonitorService disposed
+2025-11-16T00:04:06.0044148+08:00 BatteryMonitorService disposed
+2025-11-16T00:04:07.6214816+08:00 BatteryMonitorService disposed
+2025-11-16T00:04:19.8732145+08:00 BatteryMonitorService disposed
+2025-11-16T00:04:30.1404566+08:00 BatteryMonitorService disposed
+2025-11-16T00:04:35.7077960+08:00 BatteryMonitorService disposed
+2025-11-16T00:05:40.2405393+08:00 BatteryMonitorService disposed
+2025-11-16T00:05:44.9547991+08:00 BatteryMonitorService disposed
+2025-11-16T00:06:02.1076164+08:00 BatteryMonitorService disposed
+2025-11-16T00:06:03.2458020+08:00 BatteryMonitorService disposed
+2025-11-16T00:06:04.4101848+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 90
+2025-11-16T00:06:05.2399662+08:00 BatteryMonitorService disposed
+2025-11-16T00:06:34.9901416+08:00 BatteryMonitorService disposed
+2025-11-16T00:06:36.9472187+08:00 BatteryMonitorService disposed
+2025-11-16T00:06:58.0797166+08:00 BatteryMonitorService disposed
+2025-11-16T00:16:13.9345546+08:00 BatteryMonitorService disposed
+2025-11-16T00:16:17.1956308+08:00 BatteryMonitorService disposed
+2025-11-16T00:16:39.5717748+08:00 BatteryMonitorService disposed
+2025-11-16T08:07:05.7157912+08:00 BatteryMonitorService disposed
+2025-11-16T08:07:17.3085981+08:00 BatteryMonitorService disposed
+2025-11-16T08:07:40.9825168+08:00 BatteryMonitorService disposed
+2025-11-16T08:07:53.4939749+08:00 BatteryMonitorService disposed
+2025-11-16T08:07:57.3141151+08:00 BatteryMonitorService disposed
+2025-11-16T08:08:51.4092584+08:00 BatteryMonitorService disposed
+2025-11-16T08:23:10.0541905+08:00 BatteryMonitorService disposed
+2025-11-16T08:25:18.3777068+08:00 BatteryMonitorService disposed
+2025-11-16T08:26:19.7775701+08:00 BatteryMonitorService disposed
+2025-11-16T08:26:23.4596886+08:00 BatteryMonitorService disposed
+2025-11-16T08:26:57.0878890+08:00 BatteryMonitorService disposed
+2025-11-16T08:27:02.9578247+08:00 BatteryMonitorService disposed
+2025-11-16T08:35:01.9677668+08:00 BatteryMonitorService disposed
+2025-11-16T08:39:28.9273589+08:00 BatteryMonitorService disposed
+2025-11-16T08:40:14.0534569+08:00 BatteryMonitorService disposed
+2025-11-16T08:40:18.0980881+08:00 BatteryMonitorService disposed
+2025-11-16T08:40:21.9259158+08:00 BatteryMonitorService disposed
+2025-11-16T08:40:22.8974295+08:00 BatteryMonitorService disposed
+2025-11-16T08:40:23.0248103+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 90
+2025-11-16T08:40:23.2773284+08:00 BatteryMonitorService disposed
+2025-11-16T08:40:23.9588280+08:00 BatteryMonitorService disposed
+2025-11-16T08:40:24.0045440+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 90
+2025-11-16T08:40:24.3605376+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 90
+2025-11-16T08:40:27.5359086+08:00 BatteryMonitorService disposed
+2025-11-16T08:40:39.6045442+08:00 BatteryMonitorService disposed
+2025-11-16T08:42:09.7522528+08:00 BatteryMonitorService disposed
+2025-11-16T08:42:29.6664453+08:00 BatteryMonitorService disposed
+2025-11-16T08:43:02.0086396+08:00 BatteryMonitorService disposed
+2025-11-16T08:47:18.6043794+08:00 BatteryMonitorService disposed
+2025-11-16T08:47:28.0035768+08:00 BatteryMonitorService disposed
+2025-11-16T08:49:07.6274388+08:00 BatteryMonitorService disposed
+2025-11-16T08:50:23.4804308+08:00 BatteryMonitorService disposed
+2025-11-16T08:55:13.9649537+08:00 BatteryMonitorService disposed
+2025-11-16T08:59:29.2355661+08:00 BatteryMonitorService disposed
+2025-11-16T09:01:55.0683047+08:00 BatteryMonitorService disposed
+2025-11-16T09:06:43.4616036+08:00 BatteryMonitorService disposed
+2025-11-16T09:09:32.2349304+08:00 BatteryMonitorService disposed
+2025-11-16T09:12:21.0272569+08:00 BatteryMonitorService disposed
+2025-11-16T09:12:22.9456074+08:00 BatteryMonitorService disposed
+2025-11-16T09:12:23.1328921+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 90
+2025-11-16T09:12:39.9081283+08:00 BatteryMonitorService disposed
+2025-11-16T09:15:13.0021732+08:00 BatteryMonitorService disposed
+2025-11-16T10:00:30.4470728+08:00 BatteryMonitorService disposed
+2025-11-16T10:00:48.9279074+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 90
+2025-11-16T10:01:00.4677320+08:00 RefreshAsync failed: System.InvalidOperationException: 未找到名称为 真我Q3s 的 BLE 设备
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 37
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 64
+2025-11-16T10:01:30.4783875+08:00 RefreshAsync failed: System.InvalidOperationException: 未找到名称为 真我Q3s 的 BLE 设备
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 37
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 64
+2025-11-16T10:01:33.4197494+08:00 BatteryMonitorService disposed
+2025-11-16T10:07:11.5125879+08:00 BatteryMonitorService disposed
+2025-11-16T10:07:33.2581441+08:00 BatteryMonitorService disposed
+2025-11-16T10:07:37.6134285+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T10:07:41.5986859+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T10:08:30.5117351+08:00 BatteryMonitorService disposed
+2025-11-16T10:08:33.4341574+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.CheckDispose()
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T10:16:16.8639761+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:16:21.8677177+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:16:26.8819676+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:16:31.8967113+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:16:36.9060676+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:16:41.9201280+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:16:46.9274228+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:16:51.9438433+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:16:56.9512950+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:01.9627813+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:06.9772544+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:11.9894238+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:16.9913922+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:21.9921887+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:27.0055415+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:32.0152843+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:37.0288781+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:42.0382064+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:47.0406385+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:52.0500307+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:17:57.0526993+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:02.0544307+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:07.0580112+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:12.0701610+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:17.0843754+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:22.0859047+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:27.0925778+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:32.1007334+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:37.1022577+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:42.1047100+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:47.1171528+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:52.1199723+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:18:57.1312304+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:19:02.1417670+08:00 RefreshAsync timed out: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at BluetoothBattery2.Core.BluetoothService.GetOrCreateDeviceAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 100
+   at BluetoothBattery2.Core.BluetoothService.GetBatteryAsync(String deviceName, CancellationToken cancellationToken) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BluetoothService.cs:line 39
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 71
+2025-11-16T10:23:17.4295999+08:00 BatteryMonitorService disposed
+2025-11-16T10:23:18.4270437+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T10:23:46.0787158+08:00 BatteryMonitorService disposed
+2025-11-16T10:23:46.1056443+08:00 BatteryMonitorService disposed
+2025-11-16T10:23:46.5787064+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T10:23:47.2890306+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: The semaphore has been disposed.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 95
+2025-11-16T10:23:55.4085247+08:00 BatteryMonitorService disposed
+2025-11-16T10:24:54.6618795+08:00 BatteryMonitorService disposed
+2025-11-16T10:25:21.7336656+08:00 BatteryMonitorService disposed

@@ -46,7 +46,7 @@ namespace BluetoothBattery2
         /// </summary>
         private bool TryGetCachedIcon(int number, out Icon icon)
         {
-            icon = default;
+            icon = default!;
             if (number is < 1 or > 99)
             {
                 return false;
@@ -127,19 +127,26 @@ namespace BluetoothBattery2
         /// <summary>
         /// 在后台循环刷新托盘图标电量。
         /// </summary>
-        private async Task RefreshIconRepeatly()
+        private async Task RefreshIconRepeatly(CancellationToken token)
         {
-            while (true)
+            while (!token.IsCancellationRequested)
             {
                 await Refresh_IconNumber();
-                Thread.CurrentThread.Join(settings.refreshTimer);
+                try
+                {
+                    await Task.Delay(TimeSpan.FromSeconds(Math.Max(1, settings.refreshTimer)), token);
+                }
+                catch (TaskCanceledException)
+                {
+                    break;
+                }
             }
         }
 
         /// <summary>
         /// 刷新托盘图标的提示文本。
         /// </summary>
-        private void RefreshTooltips() => notifyIcon1_RefreshTooltips(null, null);
+        private void RefreshTooltips() => notifyIcon1_RefreshTooltips(null!, null!);
 
         /// <summary>
         /// 刷新右下角鼠标提示。
@@ -148,13 +155,13 @@ namespace BluetoothBattery2
         {
             var span = DateTime.Now - lastDateTime;
             notifyIcon1.Text =
-                $"{settings.deviceName}\n电量: {lastBattery}\n上次刷新: {span.TotalSeconds:##,###}秒前\n间隔: {settings.refreshTimer / 1000:##,###}秒\n字体: {font.Name}\n双击显示/隐藏主界面";
+                $"{settings.deviceName}\n电量: {lastBattery}\n上次刷新: {span.TotalSeconds:##,###}秒前\n间隔: {settings.refreshTimer:##,###}秒\n字体: {font.Name}\n双击显示/隐藏主界面";
         }
 
         /// <summary>
         /// 双击托盘图标，显示或隐藏主窗口。
         /// </summary>
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void notifyIcon1_MouseDoubleClick(object _, MouseEventArgs __)
         {
             if (!Visible || WindowState is not FormWindowState.Normal)
             {
@@ -174,7 +181,7 @@ namespace BluetoothBattery2
         private static void KeepFormInScreen()
         {
             if (form1 == null) return;
-            var width = Screen.PrimaryScreen.WorkingArea.Width;
+            var width = Screen.PrimaryScreen!.WorkingArea.Width;
             var height = Screen.PrimaryScreen.WorkingArea.Height;
             form1.Location = new Point(Math.Clamp(form1.Location.X, 0, width - form1.Width),
                 Math.Clamp(form1.Location.Y, 0, height - form1.Height));
@@ -185,7 +192,7 @@ namespace BluetoothBattery2
         /// </summary>
         private void notifyIcon1_MouseOver(object sender, MouseEventArgs e)
         {
-            Refresh_IconNumber();
+            _ = Refresh_IconNumber();
         }
 
         private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)

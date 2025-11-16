@@ -1,19 +1,18 @@
-本软件功能:
-    
-    在windows系统通知图标区显示蓝牙设备的电池电量
-    仅数字,可设置字体 
-![image](https://github.com/user-attachments/assets/c6f5719a-9897-4636-a717-8a1d6aba5800)
+# BluetoothBattery2
 
+A small Windows tray utility that shows Bluetooth device battery level as a numeric icon.
 
+> 这是一个在 Windows 通知区域显示蓝牙设备电量的小工具（仅数字，支持自定义字体和布局）。
 
-需求:
+---
 
-    windows系统 
-    需要powershell (版本7或更新)
+## Documentation / 文档
 
+- 中文说明：[`README.zh-CN.md`](./README.zh-CN.md)
+- English README: [`README.en-US.md`](./README.en-US.md)
 
+---
 
-原理:
+## Screenshot / 截图
 
-    通过powershell命令获取蓝牙设备的电量 
-    创建图标代替软件图标应用到通知区域
+![Tray Icon](https://github.com/user-attachments/assets/c6f5719a-9897-4636-a717-8a1d6aba5800)

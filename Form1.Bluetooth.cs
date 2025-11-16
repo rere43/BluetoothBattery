@@ -69,7 +69,7 @@ namespace BluetoothBattery2
             };
 
             using var process = Process.Start(start);
-            using var reader = process.StandardOutput;
+            using var reader = process!.StandardOutput;
 
             process.EnableRaisingEvents = true;
             notifyIcon1.Text = settings.deviceName;
@@ -92,7 +92,7 @@ namespace BluetoothBattery2
                 CreateNoWindow = true
             };
             using var process = Process.Start(start);
-            using var reader = process.StandardOutput;
+            using var reader = process!.StandardOutput;
 
             process.EnableRaisingEvents = true;
 

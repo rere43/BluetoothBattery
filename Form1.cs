@@ -1,20 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Drawing.Text;
-using System.IO;
-using System.Linq;
-using System.Resources;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using Newtonsoft.Json;
 using Microsoft.Win32;
+using BluetoothBattery2.Core;
 
 
 
@@ -37,6 +25,7 @@ namespace BluetoothBattery2
         private DateTime lastDateTime;
         private int lastBattery;
         private Settings settings;
+        private readonly SettingsManager settingsManager = new();
         private static Form1? form1;
 
         /// <summary>
@@ -237,7 +226,7 @@ namespace BluetoothBattery2
             UpdateDeviceLabelText();
         }
 
-        private void NumericUpDown_MouseWheel(object sender, MouseEventArgs e)
+        private void NumericUpDown_MouseWheel(object? sender, MouseEventArgs e)
         {
             if (sender is NumericUpDown numericControl)
             {
@@ -290,7 +279,7 @@ namespace BluetoothBattery2
             numericUpDown_OffsetY.MouseWheel += NumericUpDown_MouseWheel;
             numericUpDown_FontSize.MouseWheel += NumericUpDown_MouseWheel;
 
-            var width = Screen.PrimaryScreen.WorkingArea.Width;
+            var width = Screen.PrimaryScreen!.WorkingArea.Width;
             var height = Screen.PrimaryScreen.WorkingArea.Height;
             Location = new Point(width - Size.Width, height - Size.Height);
 
@@ -302,8 +291,7 @@ namespace BluetoothBattery2
 
             try
             {
-                var settingsJson = File.ReadAllText(SettingsFile_Path);
-                settings = JsonConvert.DeserializeObject<Settings>(settingsJson) ?? new Settings();
+                settings = settingsManager.Load(SettingsFile_Path);
                 if (settings.refreshTimer < 1000)
                     settings.refreshTimer *= 1000;
                 settings.language = NormalizeLanguageCode(settings.language);
@@ -325,18 +313,18 @@ namespace BluetoothBattery2
 
             SaveSettings();
 
-            defaultIcon = new Icon(notifyIcon1.Icon, 128, 128);
+            defaultIcon = new Icon(notifyIcon1.Icon!, 128, 128);
 
             lastDateTime = DateTime.Now;
 
-            async void task() => await RefreshIconRepeatly();
+            async void task() => await RefreshIconRepeatly(default!);
             refreshThread = new Thread(task);
             refreshThread.Start();
 
-            contextMenuStrip1.Items[0].Click += (_, _) => { notifyIcon1_MouseDoubleClick(default, default); };
+            contextMenuStrip1.Items[0].Click += (_, _) => { notifyIcon1_MouseDoubleClick(default!, default!); };
             contextMenuStrip1.Items[1].Click += (_, _) => { System.Environment.Exit(0); };
 
-            Closing += (_, e) =>
+            form1.FormClosing += (_, e) =>
             {
                 if (checkBox_CloseBtnMinimize.Checked)
                 {
@@ -353,7 +341,7 @@ namespace BluetoothBattery2
         private void SaveSettings()
         {
             settings.language = NormalizeLanguageCode(settings.language);
-            File.WriteAllText(SettingsFile_Path, JsonConvert.SerializeObject(settings));
+            settingsManager.Save(SettingsFile_Path, settings);
         }
 
         private Font CreateNewFont_FromSettings()
@@ -647,18 +635,4 @@ namespace BluetoothBattery2
         }
     }
 
-    public class Settings
-    {
-        public string deviceName = "MIIIW MECH-KB Pro";
-        public int refreshTimer = Form1.DefaultRefreshTimer;
-        public string fontFamilyName = "jb";
-        public List<string> availableDevice = new();
-        public bool isCloseBtnMinimize;
-        public string iconCacheFontFamilyName = string.Empty;
-        public int iconOffsetX = -20;
-        public int iconOffsetY = 0;
-        public int iconFontSize = 0;
-        public string language = "zh-CN";
-        public bool runOnStartup;
-    }
 }
