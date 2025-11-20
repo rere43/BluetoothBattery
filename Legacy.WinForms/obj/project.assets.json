@@ -126,13 +126,14 @@
     },
     "BluetoothBattery2.Core/1.0.0": {
       "type": "project",
-      "path": "BluetoothBattery2.Core/BluetoothBattery2.Core.csproj",
-      "msbuildProject": "BluetoothBattery2.Core/BluetoothBattery2.Core.csproj"
+      "path": "../BluetoothBattery2.Core/BluetoothBattery2.Core.csproj",
+      "msbuildProject": "../BluetoothBattery2.Core/BluetoothBattery2.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0-windows10.0.19041": [
-      "BluetoothBattery2.Core >= 1.0.0"
+      "BluetoothBattery2.Core >= 1.0.0",
+      "Newtonsoft.Json >= 13.0.1"
     ]
   },
   "packageFolders": {
@@ -142,11 +143,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\BluetoothBattery2.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\Legacy.WinForms\\BluetoothBattery2.csproj",
       "projectName": "BluetoothBattery2",
-      "projectPath": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\BluetoothBattery2.csproj",
+      "projectPath": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\Legacy.WinForms\\BluetoothBattery2.csproj",
       "packagesPath": "K:\\_My_Program_Cache_\\.nuget\\packages",
-      "outputPath": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\Legacy.WinForms\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -189,6 +190,12 @@
     "frameworks": {
       "net10.0-windows10.0.19041": {
         "targetAlias": "net10.0-windows10.0.19041.0",
+        "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -213,7 +220,7 @@
           "Microsoft.Windows.SDK.NET.Ref.Windows": {
             "privateAssets": "all"
           },
-          "Microsoft.WindowsDesktop.App": {
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
             "privateAssets": "none"
           }
         },

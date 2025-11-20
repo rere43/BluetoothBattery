@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9In8pMwYFjs=",
+  "dgSpecHash": "KIwzUALrs9A=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\BluetoothBattery2.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\BluetoothBattery2\\Legacy.WinForms\\BluetoothBattery2.csproj",
   "expectedPackageFiles": [
     "K:\\_My_Program_Cache_\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "K:\\_My_Program_Cache_\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
