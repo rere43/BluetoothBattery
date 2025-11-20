@@ -43,12 +43,12 @@ namespace BluetoothBattery2.Core
             ["StatusSaved"] = ("设置已保存", "Settings saved"),
             ["StatusSaveFailed"] = ("保存失败: {0}", "Save failed: {0}"),
             ["StatusReset"] = ("已恢复默认设置", "Settings reset to default"),
-            ["StatusBatteryUpdated"] = ("{0:HH:mm:ss} 获取到电量 {1}%（耗时 {2:F1}s）", "Battery {1}% @ {0:HH:mm:ss} ({2:F1}s)"),
+            ["StatusBatteryUpdated"] = ("{0:HH:mm:ss} 获取到电量 {1}%(耗时 {2:F1}s)", "Battery {1}% @ {0:HH:mm:ss} ({2:F1}s)"),
             ["StatusBatteryFailed"] = ("读取电量失败: {0}", "Failed to read battery: {0}"),
             ["StatusStartupFailed"] = ("更新开机启动失败: {0}", "Failed to update startup setting: {0}"),
             ["StatusIconCacheRebuilt"] = ("图标缓存已重建", "Icon cache rebuilt"),
             ["StatusIconCacheFailed"] = ("重建图标缓存失败: {0}", "Failed to rebuild icon cache: {0}"),
-            ["StatusIconPreviewApplied"] = ("图标设置已应用，正在刷新缓存", "Icon layout applied, refreshing cache"),
+            ["StatusIconPreviewApplied"] = ("图标设置已应用,正在刷新缓存", "Icon layout applied, refreshing cache"),
 
             // Tooltips
             ["TooltipBatteryFormat"] = ("电量: {0}%", "Battery: {0}%"),
@@ -59,7 +59,7 @@ namespace BluetoothBattery2.Core
             ["TooltipToggleHint"] = ("双击显示/隐藏主界面", "Double-click to toggle window"),
 
             // UI labels
-            ["HelpPrompt"] = ("需要帮助？", "Need help?"),
+            ["HelpPrompt"] = ("需要帮助?", "Need help?"),
             ["HelpButton"] = ("查看", "View"),
             ["HeaderDevices"] = ("蓝牙设备", "Bluetooth Devices"),
             ["DeviceSelectionHint"] = ("请选择设备", "Select a device"),
@@ -77,29 +77,31 @@ namespace BluetoothBattery2.Core
             ["HeaderActions"] = ("操作", "Actions"),
             ["RefreshLogLabel"] = ("刷新日志", "Refresh log"),
             ["RefreshLogPlaceholder"] = ("尚无刷新记录", "No refresh logs yet"),
-            ["RefreshLogStarting"] = ("{0:HH:mm:ss} 开始刷新，目标间隔 {1} 秒", "{0:HH:mm:ss} refresh started, target interval {1}s"),
-            ["RefreshLogCompleted"] = ("{0:HH:mm:ss} 刷新完成，耗时 {1:F1} 秒", "{0:HH:mm:ss} refresh completed in {1:F1}s"),
+            ["RefreshLogStarting"] = ("{0:HH:mm:ss} 开始刷新,目标间隔 {1} 秒", "{0:HH:mm:ss} refresh started, target interval {1}s"),
+            ["RefreshLogCompleted"] = ("{0:HH:mm:ss} 刷新完成,耗时 {1:F1} 秒", "{0:HH:mm:ss} refresh completed in {1:F1}s"),
             ["RefreshLogToggleShow"] = ("显示刷新日志", "Show refresh log"),
             ["RefreshLogToggleHide"] = ("关闭刷新日志", "Hide refresh log"),
             ["SaveButton"] = ("保存并刷新", "Save & refresh"),
             ["ResetButton"] = ("恢复默认", "Reset to default"),
             ["StatusHeader"] = ("实时状态", "Live status"),
+            ["BatteryModeLabel"] = ("电量获取方式", "Battery Mode"),
+            ["BatteryModeOptionPowerShell"] = ("PowerShell (兼容性高)", "PowerShell (Better Compatibility)"),
+            ["BatteryModeOptionGatt"] = ("GATT (性能更好)", "GATT (Better Performance)"),
 
             // Messages
             ["Message_LoadSettingsFallback"] = ("使用默认配置", "Default settings will be used."),
             ["Message_LoadSettingsTitle"] = ("加载设置时出错", "Failed to load settings"),
-            ["Message_HowToUse"] = (
-                string.Join(Environment.NewLine,
-                    "1: 点击刷新, 并等待(选项1的标签变回 '设备名')",
-                    "2: 第1个选项选择设备",
-                    "3: 第2个选项设置刷新间隔, 不建议太快, 默认600秒",
-                    "4: 点击保存 并刷新"),
-                string.Join(Environment.NewLine,
-                    "1: Click Reload and wait until the label shows 'Device Name' again.",
-                    "2: Choose the device from the first dropdown.",
-                    "3: Set an appropriate refresh interval (default 600 seconds).",
-                    "4: Click Save && Refresh.")),
-            ["Message_HowToUseTitle"] = ("使用方法", "How to use")
+            ["Message_HowToUseTitle"] = ("使用说明", "How to Use"),
+
+            // Battery mode descriptions
+            ["BatteryModeDesc_PowerShell"] = ("PowerShell 模式 - 兼容性高，适用于大多数蓝牙设备", "PowerShell Mode - Better compatibility, works with most Bluetooth devices"),
+            ["BatteryModeDesc_Gatt"] = ("GATT 模式 - 性能更好，响应更快，适用于支持BLE的设备", "GATT Mode - Better performance, faster response, for BLE-compatible devices"),
+
+            // Help text templates
+            ["HelpText_Step1"] = ("1. 点击刷新设备并等待列表更新", "1. Click refresh devices and wait for the list to update"),
+            ["HelpText_Step2"] = ("2. 选择目标蓝牙设备并设置刷新间隔（建议600秒）", "2. Select target Bluetooth device and set refresh interval (recommended 600s)"),
+            ["HelpText_Step3"] = ("3. 调整字体/偏移后可查看实时预览，最后保存生效", "3. Adjust font/offset for live preview, then save to apply"),
+            ["HelpText_BatteryMode"] = ("当前电量获取方式：{0}", "Current battery mode: {0}")
         };
 
         public string NormalizeLanguageCode(string? code)
@@ -131,6 +133,29 @@ namespace BluetoothBattery2.Core
         {
             var text = GetText(key, languageCode);
             return string.Format(text, args);
+        }
+
+        public string GetHelpText(string batteryMode, string? languageCode = null)
+        {
+            languageCode = NormalizeLanguageCode(languageCode);
+
+            var step1 = GetText("HelpText_Step1", languageCode);
+            var step2 = GetText("HelpText_Step2", languageCode);
+            var step3 = GetText("HelpText_Step3", languageCode);
+
+            // Get battery mode description
+            var modeDescKey = batteryMode?.ToLower() == "gatt"
+                ? "BatteryModeDesc_Gatt"
+                : "BatteryModeDesc_PowerShell";
+            var modeDesc = GetText(modeDescKey, languageCode);
+            var batteryModeText = Format("HelpText_BatteryMode", languageCode, modeDesc);
+
+            return string.Join(Environment.NewLine + Environment.NewLine,
+                step1,
+                step2,
+                step3,
+                "",
+                batteryModeText);
         }
     }
 }

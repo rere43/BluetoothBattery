@@ -14,7 +14,6 @@ namespace BluetoothBattery2.Wpf
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly SettingsManager settingsManager = new();
-        private readonly BluetoothService bluetoothService = new();
         private readonly StartupRegistrationService startupRegistrationService = new();
         private readonly LocalizationService localizationService = new();
         private readonly string settingsPath;
@@ -56,6 +55,7 @@ namespace BluetoothBattery2.Wpf
         private bool isCloseButtonMinimize;
         private bool runOnStartup;
         private LanguageOption? selectedLanguage;
+        private string? selectedBatteryMode;
         private string statusMessage;
         private bool isBusy;
         private bool isApplyingSettings;
@@ -82,12 +82,14 @@ namespace BluetoothBattery2.Wpf
             nameof(HeaderActionsText),
             nameof(SaveButtonText),
             nameof(ResetButtonText),
-            nameof(StatusHeaderText)
+            nameof(StatusHeaderText),
+            nameof(BatteryModeLabelText)
         };
 
         public ObservableCollection<string> AvailableDevices { get; } = new();
         public ObservableCollection<string> FontFamilies { get; } = new();
         public ObservableCollection<LanguageOption> Languages { get; } = new();
+        public ObservableCollection<string> BatteryModeOptions { get; } = new();
 
         public RelayCommand RefreshDevicesCommand { get; }
         public RelayCommand SaveCommand { get; }
@@ -110,6 +112,7 @@ namespace BluetoothBattery2.Wpf
             statusMessage = localizationService.GetText("StatusReady");
             LoadFonts();
             LoadLanguages();
+            LoadBatteryModeOptions();
             MigrateLegacySettingsIfNeeded();
             LoadSettings();
 
@@ -222,6 +225,12 @@ namespace BluetoothBattery2.Wpf
             }
         }
 
+        public string? SelectedBatteryMode
+        {
+            get => selectedBatteryMode;
+            set => SetProperty(ref selectedBatteryMode, value);
+        }
+
         public string StatusMessage
         {
             get => statusMessage;
@@ -261,6 +270,7 @@ namespace BluetoothBattery2.Wpf
         public string SaveButtonText => GetLocalizedText("SaveButton");
         public string ResetButtonText => GetLocalizedText("ResetButton");
         public string StatusHeaderText => GetLocalizedText("StatusHeader");
+        public string BatteryModeLabelText => GetLocalizedText("BatteryModeLabel");
 
         private void LoadSettings()
         {
@@ -296,6 +306,7 @@ namespace BluetoothBattery2.Wpf
                 RunOnStartup = value.runOnStartup;
                 SelectedLanguage = Languages.FirstOrDefault(l => string.Equals(l.Code, settings.language, StringComparison.OrdinalIgnoreCase))
                                    ?? Languages.FirstOrDefault();
+                SelectedBatteryMode = value.batteryMode;
             }
             finally
             {
@@ -315,6 +326,7 @@ namespace BluetoothBattery2.Wpf
             settings.isCloseBtnMinimize = IsCloseButtonMinimize;
             settings.runOnStartup = RunOnStartup;
             settings.language = SelectedLanguage?.Code ?? settings.language;
+            settings.batteryMode = SelectedBatteryMode ?? settings.batteryMode;
             return settings;
         }
 
@@ -340,6 +352,7 @@ namespace BluetoothBattery2.Wpf
                 IsBusy = true;
                 UpdateStatus("StatusLoadingDevices");
                 AvailableDevices.Clear();
+                var bluetoothService = BluetoothServiceFactory.Create(settings.batteryMode);
                 var devices = await bluetoothService.GetAllDevicesAsync();
                 foreach (var device in devices.Where(d => !string.IsNullOrWhiteSpace(d)))
                 {
@@ -418,6 +431,13 @@ namespace BluetoothBattery2.Wpf
             Languages.Add(new LanguageOption("en-US", localizationService.GetText("LanguageOptionEnglish", "en-US")));
         }
 
+        private void LoadBatteryModeOptions()
+        {
+            BatteryModeOptions.Clear();
+            BatteryModeOptions.Add("PowerShell");
+            BatteryModeOptions.Add("Gatt");
+        }
+
         private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string? propertyName = null)
         {
             if (Equals(storage, value))
@@ -492,6 +512,9 @@ namespace BluetoothBattery2.Wpf
 
         public string GetLocalizedText(string key, params object[] args) =>
             localizationService.Format(key, CurrentLanguageCode, args);
+
+        public string GetHelpText() =>
+            localizationService.GetHelpText(settings.batteryMode, CurrentLanguageCode);
     }
 
     public record LanguageOption(string Code, string Display)

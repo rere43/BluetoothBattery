@@ -1,0 +1,37 @@
+2025-11-20T14:44:17.7312073+08:00 BatteryMonitorService disposed
+2025-11-20T14:44:17.9096610+08:00 RefreshAsync failed: System.InvalidOperationException: 无法解析电量数据: 
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 75
+2025-11-20T14:44:17.9311917+08:00 RefreshAsync failed: System.InvalidOperationException: 无法解析电量数据: 
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 75
+2025-11-20T14:44:23.8930372+08:00 BatteryMonitorService disposed
+2025-11-20T14:44:23.9387854+08:00 RefreshAsync failed: System.InvalidOperationException: 无法解析电量数据: 
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 75
+2025-11-20T14:44:23.9577436+08:00 RefreshAsync failed: System.InvalidOperationException: 无法解析电量数据: 
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 75
+2025-11-20T14:45:15.6547788+08:00 BatteryMonitorService disposed
+2025-11-20T14:45:15.7006705+08:00 RefreshAsync failed: System.InvalidOperationException: 无法解析电量数据: 
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 75
+2025-11-20T14:45:15.7237929+08:00 RefreshAsync failed: System.InvalidOperationException: 无法解析电量数据: 
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 75
+2025-11-20T15:21:33.5291047+08:00 BatteryMonitorService disposed
+2025-11-20T15:21:33.5636782+08:00 BatteryMonitorService disposed
+2025-11-20T15:21:33.7318492+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\蓝牙电量\另一个项目\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 103
+2025-11-20T15:21:45.4290823+08:00 BatteryMonitorService disposed
+2025-11-20T15:22:04.4603806+08:00 BatteryMonitorService disposed
+2025-11-20T15:22:43.9132311+08:00 BatteryMonitorService disposed
+2025-11-20T15:22:44.5952118+08:00 Attempted to release disposed semaphore: System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Threading.SemaphoreSlim'.
+   at System.Threading.SemaphoreSlim.Release()
+   at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\蓝牙电量\另一个项目\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 103
+2025-11-20T15:23:03.3125377+08:00 BatteryMonitorService disposed
+2025-11-20T15:55:24.2886042+08:00 BatteryMonitorService disposed
+2025-11-20T15:55:26.6484854+08:00 BatteryMonitorService disposed
+2025-11-20T15:55:27.9495830+08:00 BatteryMonitorService disposed
+2025-11-20T15:55:29.2440381+08:00 BatteryMonitorService disposed
+2025-11-20T15:55:30.3858622+08:00 BatteryMonitorService disposed
+2025-11-20T15:55:40.0583166+08:00 BatteryMonitorService disposed
+2025-11-20T15:55:43.2011594+08:00 BatteryMonitorService disposed
+2025-11-20T15:55:47.7809350+08:00 BatteryMonitorService disposed

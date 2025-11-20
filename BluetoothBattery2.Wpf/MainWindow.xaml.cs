@@ -106,11 +106,12 @@ public partial class MainWindow : Window
 
     private void HelpButton_Click(object sender, RoutedEventArgs e)
     {
+        var helpText = viewModel.GetHelpText();
+        var title = viewModel.GetLocalizedText("Message_HowToUseTitle");
+
         System.Windows.MessageBox.Show(
-            "1. 点击刷新设备并等待列表更新。\n" +
-            "2. 选择目标蓝牙设备并设置刷新间隔。\n" +
-            "3. 调整字体/偏移后可点击应用预览，最后保存生效。",
-            "使用说明",
+            helpText,
+            title,
             MessageBoxButton.OK,
             MessageBoxImage.Information);
     }

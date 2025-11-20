@@ -22,7 +22,7 @@ namespace BluetoothBattery2.Core
 
     public class BatteryMonitorService : IDisposable
     {
-        private readonly BluetoothService bluetoothService;
+        private readonly IBluetoothService bluetoothService;
         private readonly Func<string?> deviceSelector;
         private Timer? refreshTimer;
         private TimeSpan refreshInterval;
@@ -35,7 +35,7 @@ namespace BluetoothBattery2.Core
         public event EventHandler<BatteryStatusChangedEventArgs>? BatteryUpdated;
         public event EventHandler<Exception>? BatteryUpdateFailed;
 
-        public BatteryMonitorService(BluetoothService bluetoothService, Func<string?> deviceSelector)
+        public BatteryMonitorService(IBluetoothService bluetoothService, Func<string?> deviceSelector)
         {
             this.bluetoothService = bluetoothService ?? throw new ArgumentNullException(nameof(bluetoothService));
             this.deviceSelector = deviceSelector ?? throw new ArgumentNullException(nameof(deviceSelector));

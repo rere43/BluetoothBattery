@@ -18,7 +18,6 @@ namespace BluetoothBattery2.Wpf
         private readonly NotifyIcon notifyIcon;
         private readonly ContextMenuStrip contextMenu;
         private readonly IconService iconService = new();
-        private readonly BluetoothService bluetoothService = new();
         private BatteryMonitorService? batteryMonitor;
         private Settings? currentSettings;
         private Icon baseIcon;
@@ -106,6 +105,7 @@ namespace BluetoothBattery2.Wpf
         private void StartBatteryMonitor(Settings settings, bool forceRefresh)
         {
             batteryMonitor?.Dispose();
+            var bluetoothService = BluetoothServiceFactory.Create(settings.batteryMode);
             batteryMonitor = new BatteryMonitorService(bluetoothService, () => viewModel.SelectedDevice);
             batteryMonitor.RefreshStarting += (_, _) => System.Windows.Application.Current.Dispatcher.Invoke(() =>
             {
@@ -151,7 +151,7 @@ namespace BluetoothBattery2.Wpf
             ApplyIconToTray(newIcon);
             newIcon.Dispose();
         }
-        
+
         private async Task EnsureIconCacheAsync(Settings settings, bool forceRebuild)
         {
             try

@@ -18,5 +18,6 @@ namespace BluetoothBattery2.Core
         public string language = "zh-CN";
         public bool runOnStartup;
         public bool iconLayoutMigrated = true;
+        public string batteryMode = "PowerShell"; // PowerShell 或 Gatt
     }
 }
