@@ -56,3 +56,10 @@ mono_crash.*
 project.lock.json
 project.fragment.lock.json
 artifacts/
+
+# Application-specific
+*.log
+UpgradeLog*.htm
+settings.txt
+iconcache/
+未标题*.ico
