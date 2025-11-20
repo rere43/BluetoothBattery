@@ -10,6 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Legacy.WinForms/**" />
+    <EmbeddedResource Remove="Legacy.WinForms/**" />
+    <None Remove="Legacy.WinForms/**" />
+    <Page Remove="Legacy.WinForms/**" />
+    <Compile Remove="BluetoothBattery2.Core/**" />
+    <EmbeddedResource Remove="BluetoothBattery2.Core/**" />
+    <None Remove="BluetoothBattery2.Core/**" />
+    <Page Remove="BluetoothBattery2.Core/**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="BluetoothBattery2.Core\BluetoothBattery2.Core.csproj" />
   </ItemGroup>
 
