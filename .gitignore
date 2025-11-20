@@ -1,1 +1,58 @@
+# Visual Studio Code
 .vscode/settings.json
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache/options
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+**/packages/*
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+*.userprefs
+
+# Mono
+mono_crash.*
+
+# JetRider
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Package restore
+project.lock.json
+project.fragment.lock.json
+artifacts/
