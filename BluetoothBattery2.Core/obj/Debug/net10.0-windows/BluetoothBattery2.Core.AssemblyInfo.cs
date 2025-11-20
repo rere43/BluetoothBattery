@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BluetoothBattery2.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+586c9a6c6d2523bf86c1fcaad0d299922f57b1f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34c84f590e75127c038e2660f6e61d4cd3b52ec1")]
 [assembly: System.Reflection.AssemblyProductAttribute("BluetoothBattery2.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BluetoothBattery2.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

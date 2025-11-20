@@ -121,3 +121,21 @@ Object name: 'System.Threading.SemaphoreSlim'.
    at System.Threading.SemaphoreSlim.Release(Int32 releaseCount)
    at BluetoothBattery2.Core.BatteryMonitorService.RefreshAsync(Boolean forceNotify) in C:\Users\Administrator\source\repos\BluetoothBattery2\BluetoothBattery2.Core\BatteryMonitorService.cs:line 103
 2025-11-16T22:01:45.8316422+08:00 BatteryMonitorService disposed
+2025-11-17T16:23:49.0827577+08:00 BatteryMonitorService disposed
+2025-11-17T18:41:28.5763272+08:00 BatteryMonitorService disposed
+2025-11-17T18:41:36.8142795+08:00 BatteryMonitorService disposed
+2025-11-17T18:42:47.6301607+08:00 BatteryMonitorService disposed
+2025-11-17T18:42:54.2289673+08:00 BatteryMonitorService disposed
+2025-11-17T18:43:02.7274897+08:00 BatteryMonitorService disposed
+2025-11-17T18:43:06.9611060+08:00 BatteryMonitorService disposed
+2025-11-17T18:43:12.5476830+08:00 BatteryMonitorService disposed
+2025-11-17T18:43:20.1838396+08:00 BatteryMonitorService disposed
+2025-11-17T19:39:06.6981298+08:00 BatteryMonitorService disposed
+2025-11-17T19:39:12.0773044+08:00 BatteryMonitorService disposed
+2025-11-17T19:39:15.9416152+08:00 BatteryMonitorService disposed
+2025-11-17T19:39:19.7231536+08:00 BatteryMonitorService disposed
+2025-11-17T19:40:13.7416152+08:00 BatteryMonitorService disposed
+2025-11-17T19:40:19.7120039+08:00 BatteryMonitorService disposed
+2025-11-17T19:40:28.7471723+08:00 BatteryMonitorService disposed
+2025-11-17T19:40:40.4124328+08:00 BatteryMonitorService disposed
+2025-11-17T19:41:14.4211248+08:00 BatteryMonitorService disposed
